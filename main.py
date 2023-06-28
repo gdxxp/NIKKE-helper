@@ -13,38 +13,26 @@ class TaskThread(QtCore.QThread):
     def __init__(self, task_number, parent=None):
         super().__init__(parent)
         self.task_number = task_number
-        # self.stop_event = threading.Event()
         self.start_time = None
 
     def run(self):
         self.start_time = time.time()  # 记录任务开始时间
         if self.task_number == 1:
-            # while not self.stop_event.is_set():
             while True:
                 auto_task.gain_rewards()
                 time.sleep(1)
         elif self.task_number == 2:
-            # while not self.stop_event.is_set():
             while True:
                 auto_task.send_friendship()
                 time.sleep(1)
         elif self.task_number == 3:
-            # while not self.stop_event.is_set():
             while True:
                 auto_task.simulation_room()
                 time.sleep(1)
         elif self.task_number == 4:
-            # while not self.stop_event.is_set():
             while True:
                 auto_task.auto_consult()
                 time.sleep(1)
-
-    # def stop(self):
-    #     self.stop_event.set()
-
-    # def restart(self):
-    #     if self.stop_event.is_set():
-    #         self.stop_event.clear()
 
 
 class Window(QtWidgets.QWidget):
@@ -88,7 +76,6 @@ class Window(QtWidgets.QWidget):
         self.current_task = "友情点"
         self.current_thread = self.task2_thread
         self.task2_thread.start()
-        # self.restart_task()
         self.start_timer()
 
     def run_task3(self):
@@ -97,7 +84,6 @@ class Window(QtWidgets.QWidget):
         self.current_task = "模拟室"
         self.current_thread = self.task3_thread
         self.task3_thread.start()
-        # self.restart_task()
         self.start_timer()
 
     def run_task4(self):
@@ -106,17 +92,12 @@ class Window(QtWidgets.QWidget):
         self.current_task = "自动咨询"
         self.current_thread = self.task4_thread
         self.task4_thread.start()
-        # self.restart_task()
         self.start_timer()
 
     def stop_task(self):
         if self.current_thread:
-            # self.current_thread.stop()
             self.current_thread.terminate()
         self.stop_timer()
-
-    # def restart_task(self):
-    #     self.current_thread.restart()
 
     def start_timer(self):
         self.timer = threading.Timer(1, self.update_time)
