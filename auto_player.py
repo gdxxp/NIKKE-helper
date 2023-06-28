@@ -138,7 +138,7 @@ class Player(object):
             cv2.waitKey(0)
             cv2.destroyAllWindows()
         res = len(loc_pos)
-        msg = f'查找结果：{c_name} 匹配到 {res} 个位置'
+        msg = f'查找结果：{c_name} 匹配到 {res} 个位置，识别精确度：{self.accuracy}'
         print(msg)
         return loc_pos
 
@@ -171,7 +171,7 @@ class Player(object):
     # 寻找name_list中的目标，并点击第一个找到的目标，然后中止
     # 注意有优先级顺序，找到了前面的就不会再找后面的
     # 只返回第一个找到并点击的name，都没找到返回false
-    def find_touch(self, name_list, area=None):
+    def find_touch_same_screen(self, name_list, area=None):
         background = self.screen_shot()
         if area:
             background, start = self.cut(background, area)
@@ -185,5 +185,27 @@ class Player(object):
                     loc_pos[0][1] += start[1]
                 self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
                 re = name
-            time.sleep(2)
+                break
         return re
+
+    # 依次寻找name_list中的目标，并点击
+    def find_touch(self, name_list, area=None):
+        re = False
+        name_list = name_list if type(name_list) == list else [name_list, ]
+        for name in name_list:
+            background = self.screen_shot()
+            if area:
+                background, start = self.cut(background, area)
+            loc_pos = self.locate(background, name)
+            if len(loc_pos) > 0:
+                if area:  # 从裁剪后的坐标还原回裁前的坐标
+                    loc_pos[0][0] += start[0]
+                    loc_pos[0][1] += start[1]
+                self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
+                re = name
+            time.sleep(2.3)
+        return re
+
+    # 修改精确度
+    def change_accuracy(self, new_accuracy):
+        self.accuracy = new_accuracy

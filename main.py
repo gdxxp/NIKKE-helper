@@ -13,34 +13,38 @@ class TaskThread(QtCore.QThread):
     def __init__(self, task_number, parent=None):
         super().__init__(parent)
         self.task_number = task_number
-        self.stop_event = threading.Event()
+        # self.stop_event = threading.Event()
         self.start_time = None
 
     def run(self):
         self.start_time = time.time()  # 记录任务开始时间
         if self.task_number == 1:
-            while not self.stop_event.is_set():
+            # while not self.stop_event.is_set():
+            while True:
                 auto_task.gain_rewards()
                 time.sleep(1)
         elif self.task_number == 2:
-            while not self.stop_event.is_set():
+            # while not self.stop_event.is_set():
+            while True:
                 auto_task.send_friendship()
                 time.sleep(1)
         elif self.task_number == 3:
-            while not self.stop_event.is_set():
+            # while not self.stop_event.is_set():
+            while True:
                 auto_task.simulation_room()
                 time.sleep(1)
         elif self.task_number == 4:
-            while not self.stop_event.is_set():
-                auto_task.auto_aim()
-                time.sleep(0.5)
+            # while not self.stop_event.is_set():
+            while True:
+                auto_task.auto_consult()
+                time.sleep(1)
 
-    def stop(self):
-        self.stop_event.set()
+    # def stop(self):
+    #     self.stop_event.set()
 
-    def restart(self):
-        if self.stop_event.is_set():
-            self.stop_event.clear()
+    # def restart(self):
+    #     if self.stop_event.is_set():
+    #         self.stop_event.clear()
 
 
 class Window(QtWidgets.QWidget):
@@ -55,8 +59,13 @@ class Window(QtWidgets.QWidget):
         self.ui.pushButton4.clicked.connect(self.run_task4)
         self.ui.stopButton.clicked.connect(self.stop_task)
 
+        self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
+
+        self.ui.label_2.setText("精确度: 0.8")
+
         self.current_task = None
         self.timer = None
+        self.accuracy = 8
 
         self.current_thread = None
         self.task1_thread = TaskThread(1)
@@ -70,7 +79,7 @@ class Window(QtWidgets.QWidget):
         self.current_task = "收米"
         self.current_thread = self.task1_thread
         self.task1_thread.start()
-        self.restart_task()
+        # self.restart_task()
         self.start_timer()
 
     def run_task2(self):
@@ -79,7 +88,7 @@ class Window(QtWidgets.QWidget):
         self.current_task = "友情点"
         self.current_thread = self.task2_thread
         self.task2_thread.start()
-        self.restart_task()
+        # self.restart_task()
         self.start_timer()
 
     def run_task3(self):
@@ -88,26 +97,26 @@ class Window(QtWidgets.QWidget):
         self.current_task = "模拟室"
         self.current_thread = self.task3_thread
         self.task3_thread.start()
-        self.restart_task()
+        # self.restart_task()
         self.start_timer()
 
     def run_task4(self):
         if self.current_thread:
             self.stop_task()
-        self.current_task = "瞄红圈"
+        self.current_task = "自动咨询"
         self.current_thread = self.task4_thread
         self.task4_thread.start()
-        self.restart_task()
+        # self.restart_task()
         self.start_timer()
 
     def stop_task(self):
         if self.current_thread:
-            self.current_thread.stop()
+            # self.current_thread.stop()
             self.current_thread.terminate()
         self.stop_timer()
 
-    def restart_task(self):
-        self.current_thread.restart()
+    # def restart_task(self):
+    #     self.current_thread.restart()
 
     def start_timer(self):
         self.timer = threading.Timer(1, self.update_time)
@@ -123,6 +132,11 @@ class Window(QtWidgets.QWidget):
             elapsed_time_str = QtCore.QTime(0, 0, 0).addSecs(int(elapsed_time)).toString("hh:mm:ss")
             self.ui.label.setText(f"{self.current_task}: {elapsed_time_str}")
         self.start_timer()
+
+    def change_accuracy(self):
+        self.accuracy = self.ui.horizontalSlider.value()
+        self.ui.label_2.setText(f"精确度: {self.accuracy / 10}")
+        auto_task.change_accuracy(self.accuracy / 10)
 
 
 if __name__ == "__main__":

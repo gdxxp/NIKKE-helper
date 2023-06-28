@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
-    QWidget)
+    QSlider, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -55,12 +55,25 @@ class Ui_Form(object):
         self.pushButton3.setFont(font1)
         self.stopButton = QPushButton(Form)
         self.stopButton.setObjectName(u"stopButton")
-        self.stopButton.setGeometry(QRect(280, 440, 101, 51))
+        self.stopButton.setGeometry(QRect(270, 440, 101, 51))
         self.stopButton.setFont(font1)
         self.pushButton4 = QPushButton(Form)
         self.pushButton4.setObjectName(u"pushButton4")
         self.pushButton4.setGeometry(QRect(40, 330, 101, 51))
         self.pushButton4.setFont(font1)
+        self.pushButton4.setCursor(QCursor(Qt.ArrowCursor))
+        self.horizontalSlider = QSlider(Form)
+        self.horizontalSlider.setObjectName(u"horizontalSlider")
+        self.horizontalSlider.setGeometry(QRect(40, 470, 101, 16))
+        self.horizontalSlider.setMinimum(4)
+        self.horizontalSlider.setMaximum(10)
+        self.horizontalSlider.setSingleStep(1)
+        self.horizontalSlider.setPageStep(1)
+        self.horizontalSlider.setValue(8)
+        self.horizontalSlider.setOrientation(Qt.Horizontal)
+        self.label_2 = QLabel(Form)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(40, 440, 101, 21))
 
         self.retranslateUi(Form)
 
@@ -74,6 +87,7 @@ class Ui_Form(object):
         self.label.setText("")
         self.pushButton3.setText(QCoreApplication.translate("Form", u"\u6a21\u62df\u5ba4", None))
         self.stopButton.setText(QCoreApplication.translate("Form", u"\u7ec8\u6b62\u4efb\u52a1", None))
-        self.pushButton4.setText(QCoreApplication.translate("Form", u"\u7784\u7ea2\u5708", None))
+        self.pushButton4.setText(QCoreApplication.translate("Form", u"\u81ea\u52a8\u54a8\u8be2", None))
+        self.label_2.setText("")
     # retranslateUi
 
