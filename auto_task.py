@@ -83,8 +83,10 @@ def simulation_room():
             my_player.find_touch(['EPIC', 'confirm'])
         elif my_player.exist(['SSR']):
             my_player.find_touch(['SSR', 'confirm'])
-        else:
+        elif my_player.exist(['SR']):
             my_player.find_touch(['SR', 'confirm'])
+        else:
+            my_player.find_touch(['R', 'confirm'])
 
         if my_player.exist(['enter_B']):
             my_player.find_touch(['enter_B'])
