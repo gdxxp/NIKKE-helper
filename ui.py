@@ -64,7 +64,7 @@ class Ui_Form(object):
         self.pushButton4.setCursor(QCursor(Qt.ArrowCursor))
         self.horizontalSlider = QSlider(Form)
         self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setGeometry(QRect(40, 470, 101, 16))
+        self.horizontalSlider.setGeometry(QRect(180, 470, 61, 16))
         self.horizontalSlider.setMinimum(4)
         self.horizontalSlider.setMaximum(10)
         self.horizontalSlider.setSingleStep(1)
@@ -73,7 +73,17 @@ class Ui_Form(object):
         self.horizontalSlider.setOrientation(Qt.Horizontal)
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(40, 440, 101, 21))
+        self.label_2.setGeometry(QRect(180, 440, 61, 21))
+        self.horizontalSlider_2 = QSlider(Form)
+        self.horizontalSlider_2.setObjectName(u"horizontalSlider_2")
+        self.horizontalSlider_2.setGeometry(QRect(40, 470, 101, 16))
+        self.horizontalSlider_2.setMinimum(20)
+        self.horizontalSlider_2.setMaximum(100)
+        self.horizontalSlider_2.setValue(25)
+        self.horizontalSlider_2.setOrientation(Qt.Horizontal)
+        self.label_3 = QLabel(Form)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(40, 440, 101, 21))
 
         self.retranslateUi(Form)
 
@@ -83,11 +93,12 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"NikkeHelper", None))
         self.pushButton1.setText(QCoreApplication.translate("Form", u"\u6536\u7c73", None))
-        self.pushButton2.setText(QCoreApplication.translate("Form", u"\u53cb\u60c5\u70b9", None))
+        self.pushButton2.setText(QCoreApplication.translate("Form", u"\u8fde\u7eed\u5355\u62bd", None))
         self.label.setText("")
         self.pushButton3.setText(QCoreApplication.translate("Form", u"\u6a21\u62df\u5ba4", None))
         self.stopButton.setText(QCoreApplication.translate("Form", u"\u7ec8\u6b62\u4efb\u52a1", None))
         self.pushButton4.setText(QCoreApplication.translate("Form", u"\u81ea\u52a8\u54a8\u8be2", None))
         self.label_2.setText("")
+        self.label_3.setText("")
     # retranslateUi
 

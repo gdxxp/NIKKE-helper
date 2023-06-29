@@ -3,17 +3,20 @@ import time
 from auto_player import Player
 
 my_player = Player(accuracy=0.8, adb_mode=False)
-my_rough_player = Player(accuracy=0.3, adb_mode=False)
 
 
 def change_accuracy(new_accuracy):
     my_player.change_accuracy(new_accuracy)
 
 
+def change_interval(new_interval):
+    my_player.change_interval(new_interval)
+
+
 def gain_rewards():
     # 仓库收米
     if my_player.exist(['100%']):
-        my_player.find_touch(['lobby', '100%', 'destroy', 'start_destroy', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
+        my_player.find_touch(['lobby', '100%', 'destroy', 'start_destroy', 'REWARD', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
         time.sleep(2)
     # 友情点
     if my_player.exist(['friend']):
@@ -42,11 +45,11 @@ def gain_rewards():
     if my_player.exist(['base']):
         my_player.find_touch(['base'])
         time.sleep(5.5)
-        my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home'])
+        my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch'])
 
 
-def send_friendship():
-    my_player.find_touch(['friend','give', 'confirm', 'ark'])
+def recruit():
+    my_player.find_touch_same_screen(['recruit_one', 'skip', 'confirm_3'])
 
 
 def simulation_room():
@@ -94,4 +97,11 @@ def simulation_room():
 
 
 def auto_consult():
-    print("to do")
+    if my_player.exist(['nikke']):
+        my_player.find_touch(['nikke', 'consult'])
+        time.sleep(2)
+    if my_player.exist(['nikke_consult']):
+        my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_2', 'auto'])
+        time.sleep(2)
+    if my_player.exist(['consult_option']):
+        my_player.find_touch(['consult_option', 'skip', 'back'])

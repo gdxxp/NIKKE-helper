@@ -23,7 +23,7 @@ class TaskThread(QtCore.QThread):
                 time.sleep(1)
         elif self.task_number == 2:
             while True:
-                auto_task.send_friendship()
+                auto_task.recruit()
                 time.sleep(1)
         elif self.task_number == 3:
             while True:
@@ -48,12 +48,15 @@ class Window(QtWidgets.QWidget):
         self.ui.stopButton.clicked.connect(self.stop_task)
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
+        self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
 
-        self.ui.label_2.setText("精确度: 0.8")
+        self.ui.label_2.setText("精确度：0.8")
+        self.ui.label_3.setText("操作时间间隔：2.5s")
 
         self.current_task = None
         self.timer = None
         self.accuracy = 8
+        self.interval = 25
 
         self.current_thread = None
         self.task1_thread = TaskThread(1)
@@ -73,7 +76,7 @@ class Window(QtWidgets.QWidget):
     def run_task2(self):
         if self.current_thread:
             self.stop_task()
-        self.current_task = "友情点"
+        self.current_task = "连续单抽"
         self.current_thread = self.task2_thread
         self.task2_thread.start()
         self.start_timer()
@@ -116,8 +119,13 @@ class Window(QtWidgets.QWidget):
 
     def change_accuracy(self):
         self.accuracy = self.ui.horizontalSlider.value()
-        self.ui.label_2.setText(f"精确度: {self.accuracy / 10}")
+        self.ui.label_2.setText(f"精确度：{self.accuracy / 10}")
         auto_task.change_accuracy(self.accuracy / 10)
+
+    def change_interval(self):
+        self.interval = self.ui.horizontalSlider_2.value()
+        self.ui.label_3.setText(f"操作时间间隔：{self.interval / 10}s")
+        auto_task.change_interval(self.interval / 10)
 
 
 if __name__ == "__main__":

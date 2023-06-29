@@ -24,6 +24,7 @@ class Player(object):
     def __init__(self, accuracy=0.8, adb_mode=False, adb_num=0):
         super(Player, self).__init__()
         self.accuracy = accuracy
+        self.interval = 2.5
         self.adb_mode = adb_mode
         self.load_target()
         if self.adb_mode:
@@ -203,9 +204,13 @@ class Player(object):
                     loc_pos[0][1] += start[1]
                 self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
                 re = name
-            time.sleep(2.3)
+            time.sleep(self.interval)
         return re
 
     # 修改精确度
     def change_accuracy(self, new_accuracy):
         self.accuracy = new_accuracy
+
+    # 修改时间间隔
+    def change_interval(self, new_interval):
+        self.interval = new_interval

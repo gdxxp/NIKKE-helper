@@ -59,7 +59,7 @@
     </font>
    </property>
    <property name="text">
-    <string>友情点</string>
+    <string>连续单抽</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -143,9 +143,9 @@
   <widget class="QSlider" name="horizontalSlider">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>180</x>
      <y>470</y>
-     <width>101</width>
+     <width>61</width>
      <height>16</height>
     </rect>
    </property>
@@ -169,6 +169,41 @@
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>440</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider_2">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>470</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>20</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
+   <property name="value">
+    <number>25</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>40</x>
