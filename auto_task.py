@@ -20,7 +20,7 @@ def gain_rewards():
         time.sleep(2)
     # 友情点
     if my_player.exist(['friend']):
-        my_player.find_touch(['friend', 'give', 'confirm', 'ark', 'lobby'])
+        my_player.find_touch(['friend', 'give', 'confirm', 'ark', 'ark', 'home'])
         time.sleep(2)
     # 邮箱
     if my_player.exist(['mail']):
