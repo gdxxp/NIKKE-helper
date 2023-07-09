@@ -46,6 +46,10 @@ def gain_rewards():
         my_player.find_touch(['base'])
         time.sleep(5.5)
         my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch'])
+    # 露菲弹窗广告
+    if my_player.exist(['ad']):
+        my_player.find_touch(['ad', 'confirm_2'])
+        time.sleep(2)
 
 
 def recruit():
@@ -107,3 +111,5 @@ def auto_consult():
         time.sleep(2)
     if my_player.exist(['consult_option']):
         my_player.find_touch(['consult_option', 'skip', 'back'])
+    if my_player.exist(['rank_up']):
+        my_player.find_touch(['rank_up'])
