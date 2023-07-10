@@ -20,7 +20,7 @@ def gain_rewards():
         time.sleep(2)
     # 友情点
     if my_player.exist(['friend']):
-        my_player.find_touch(['friend', 'give', 'confirm', 'close', 'lobby'])
+        my_player.find_touch(['friend', 'give', 'confirm', 'close', 'close', 'lobby'])
         time.sleep(2)
     # 邮箱
     if my_player.exist(['mail']):
@@ -89,7 +89,7 @@ def simulation_room():
             my_player.find_touch(['SSR', 'confirm'])
         elif my_player.exist(['SR']):
             my_player.find_touch(['SR', 'confirm'])
-        else:
+        elif my_player.exist(['R']):
             my_player.find_touch(['R', 'confirm'])
 
         if my_player.exist(['enter_B']):
@@ -110,6 +110,10 @@ def auto_consult():
         my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_2', 'auto'])
         time.sleep(2)
     if my_player.exist(['consult_option']):
-        my_player.find_touch(['consult_option', 'skip', 'back'])
-    if my_player.exist(['rank_up']):
-        my_player.find_touch(['rank_up'])
+        my_player.find_touch(['consult_option', 'skip'])
+        if my_player.exist(['rank_up']):
+            my_player.find_touch(['rank_up'])
+
+        time.sleep(1)
+        my_player.find_touch(['back'])
+
