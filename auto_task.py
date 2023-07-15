@@ -110,10 +110,9 @@ def auto_consult():
         my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_2', 'auto'])
         time.sleep(2)
     if my_player.exist(['consult_option']):
-        my_player.find_touch(['consult_option', 'skip'])
-        if my_player.exist(['rank_up']):
-            my_player.find_touch(['rank_up'])
+        my_player.find_touch(['consult_option', 'skip', 'back'])
+        time.sleep(2)
+    if my_player.exist(['rank_up']):
+        my_player.find_touch(['rank_up', 'back'])
 
-        time.sleep(1)
-        my_player.find_touch(['back'])
 
