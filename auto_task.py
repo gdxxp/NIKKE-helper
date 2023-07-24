@@ -58,7 +58,7 @@ def recruit():
 
 def simulation_room():
     if my_player.exist(['ark']):
-        my_player.find_touch(['ark', 'simulation_room', 'start_simulation_1'])
+        my_player.find_touch(['ark', 'simulation_room', 'simulation_room', 'start_simulation_1'])
         time.sleep(4)
         my_player.find_touch(['start_simulation_2'])
     while True:
@@ -69,11 +69,11 @@ def simulation_room():
         elif my_player.exist(['boss_battle']):
             my_player.find_touch(['boss_battle'])
         elif my_player.exist(['treatment_room']):
-            my_player.find_touch(['treatment_room', 'cure', 'confirm'])
+            my_player.find_touch(['treatment_room', 'cure', 'confirm_5'])
             time.sleep(1)
-            my_player.find_touch(['confirm'])
+            my_player.find_touch(['confirm_2'])
         elif my_player.exist(['cure']):
-            my_player.find_touch(['cure', 'confirm'])
+            my_player.find_touch(['cure', 'confirm_5', 'confirm_2'])
 
         if my_player.exist(['quick_battle']):
             my_player.find_touch(['quick_battle'])
@@ -84,13 +84,13 @@ def simulation_room():
         time.sleep(1)
 
         if my_player.exist(['EPIC']):
-            my_player.find_touch(['EPIC', 'confirm'])
+            my_player.find_touch(['EPIC', 'confirm', 'confirm_4'])
         elif my_player.exist(['SSR']):
-            my_player.find_touch(['SSR', 'confirm'])
+            my_player.find_touch(['SSR', 'confirm', 'confirm_4'])
         elif my_player.exist(['SR']):
-            my_player.find_touch(['SR', 'confirm'])
+            my_player.find_touch(['SR', 'confirm', 'confirm_4'])
         elif my_player.exist(['R']):
-            my_player.find_touch(['R', 'confirm'])
+            my_player.find_touch(['R', 'confirm', 'confirm_4'])
 
         if my_player.exist(['enter_B']):
             my_player.find_touch(['enter_B'])
