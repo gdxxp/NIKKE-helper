@@ -71,9 +71,9 @@ def simulation_room():
         elif my_player.exist(['treatment_room']):
             my_player.find_touch(['treatment_room', 'cure', 'confirm_5'])
             time.sleep(1)
-            my_player.find_touch(['confirm_2'])
+            my_player.find_touch(['confirm_5'])
         elif my_player.exist(['cure']):
-            my_player.find_touch(['cure', 'confirm_5', 'confirm_2'])
+            my_player.find_touch(['cure', 'confirm_5', 'confirm_5'])
 
         if my_player.exist(['quick_battle']):
             my_player.find_touch(['quick_battle'])
@@ -107,7 +107,7 @@ def auto_consult():
         my_player.find_touch(['nikke', 'consult'])
         time.sleep(2)
     if my_player.exist(['nikke_consult']):
-        my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_2', 'auto'])
+        my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
         time.sleep(2)
     if my_player.exist(['consult_option']):
         my_player.find_touch(['consult_option', 'skip', 'back'])
