@@ -18,6 +18,9 @@ def gain_rewards():
     if my_player.exist(['100%']):
         my_player.find_touch(['lobby', '100%', 'destroy', 'start_destroy', 'REWARD', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
         time.sleep(2)
+    elif my_player.exist(['no100%']):
+        my_player.find_touch(['lobby', 'no100%', 'destroy', 'start_destroy', 'REWARD', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
+        time.sleep(2)
     # 友情点
     if my_player.exist(['friend']):
         my_player.find_touch(['friend', 'give', 'confirm', 'close', 'close', 'lobby'])
@@ -45,7 +48,10 @@ def gain_rewards():
     if my_player.exist(['base']):
         my_player.find_touch(['base'])
         time.sleep(5.5)
-        my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch'])
+        my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
+    # 日常任务
+    if my_player.exist(['mission']):
+        my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'close_2'])
     # 露菲弹窗广告
     if my_player.exist(['ad']):
         my_player.find_touch(['ad', 'confirm_2'])
