@@ -37,7 +37,15 @@ def gain_rewards():
         time.sleep(2)
     # 付费商店每日钻石
     if my_player.exist(['pay_shop']):
-        my_player.find_touch(['pay_shop', 'gift', 'everyday', 'gift_everyday', 'REWARD', 'home'])
+        my_player.find_touch(['pay_shop', 'gift'])
+        time.sleep(2)
+        if my_player.exist(['everymonth']):
+            my_player.find_touch(['everymonth', 'free_diamond', 'REWARD'])
+            time.sleep(2)
+        if my_player.exist(['everyweek']):
+            my_player.find_touch(['everyweek', 'free_diamond', 'REWARD'])
+            time.sleep(2)
+        my_player.find_touch(['everyday', 'free_diamond', 'REWARD', 'home'])
         time.sleep(2)
     # 特殊竞技场收米
     if my_player.exist(['ark']):
@@ -49,9 +57,10 @@ def gain_rewards():
         my_player.find_touch(['base'])
         time.sleep(5.5)
         my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
+        time.sleep(4)
     # 日常任务
     if my_player.exist(['mission']):
-        my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'close_2'])
+        my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
     # 露菲弹窗广告
     if my_player.exist(['ad']):
         my_player.find_touch(['ad', 'confirm_2'])
