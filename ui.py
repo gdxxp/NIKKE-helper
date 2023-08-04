@@ -29,7 +29,7 @@ class Ui_Form(object):
         font.setPointSize(9)
         Form.setFont(font)
         icon = QIcon()
-        icon.addFile(u"./icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"D:/project/nikke_auto_script/icon.png", QSize(), QIcon.Normal, QIcon.Off)
         Form.setWindowIcon(icon)
         self.pushButton1 = QPushButton(Form)
         self.pushButton1.setObjectName(u"pushButton1")
@@ -84,6 +84,10 @@ class Ui_Form(object):
         self.label_3 = QLabel(Form)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(40, 440, 101, 21))
+        self.initButton = QPushButton(Form)
+        self.initButton.setObjectName(u"initButton")
+        self.initButton.setGeometry(QRect(170, 60, 101, 51))
+        self.initButton.setFont(font1)
 
         self.retranslateUi(Form)
 
@@ -100,5 +104,6 @@ class Ui_Form(object):
         self.pushButton4.setText(QCoreApplication.translate("Form", u"\u81ea\u52a8\u54a8\u8be2", None))
         self.label_2.setText("")
         self.label_3.setText("")
+        self.initButton.setText(QCoreApplication.translate("Form", u"\u77eb\u6b63\u7a97\u53e3", None))
     # retranslateUi
 

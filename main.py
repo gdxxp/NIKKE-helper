@@ -1,5 +1,6 @@
 import sys
 import time
+import pygetwindow
 import threading
 import auto_task
 
@@ -46,6 +47,7 @@ class Window(QtWidgets.QWidget):
         self.ui.pushButton3.clicked.connect(self.run_task3)
         self.ui.pushButton4.clicked.connect(self.run_task4)
         self.ui.stopButton.clicked.connect(self.stop_task)
+        self.ui.initButton.clicked.connect(self.correct_window)
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
@@ -126,6 +128,13 @@ class Window(QtWidgets.QWidget):
         self.interval = self.ui.horizontalSlider_2.value()
         self.ui.label_3.setText(f"操作时间间隔：{self.interval / 10}s")
         auto_task.change_interval(self.interval / 10)
+
+    @staticmethod
+    def correct_window():
+        window_list = pygetwindow.getWindowsWithTitle('NIKKE')
+        if window_list:
+            print(window_list)
+            window_list[1].resizeTo(1037, 811)
 
 
 if __name__ == "__main__":
