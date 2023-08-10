@@ -96,7 +96,7 @@ def simulation_room():
             my_player.find_touch(['enter_battle'])
 
         my_player.find_touch(['next_step'])
-        time.sleep(1)
+        time.sleep(0.5)
 
         if my_player.exist(['EPIC']):
             my_player.find_touch(['EPIC', 'confirm', 'confirm_4'])
@@ -114,7 +114,6 @@ def simulation_room():
         elif my_player.exist(['end_simulation']):
             my_player.find_touch(['end_simulation'])
             break
-        time.sleep(0.5)
 
 
 def auto_consult():

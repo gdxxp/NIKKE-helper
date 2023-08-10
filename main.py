@@ -72,7 +72,6 @@ class Window(QtWidgets.QWidget):
         self.current_task = "收米"
         self.current_thread = self.task1_thread
         self.task1_thread.start()
-        # self.restart_task()
         self.start_timer()
 
     def run_task2(self):
