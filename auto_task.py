@@ -16,55 +16,52 @@ def change_interval(new_interval):
 def gain_rewards():
     # 仓库收米
     if my_player.exist(['100%']):
-        my_player.find_touch(['lobby', '100%', 'destroy', 'start_destroy', 'REWARD', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
-        time.sleep(2)
+        destroy_item(my_player, '100%')
     elif my_player.exist(['no100%']):
-        my_player.find_touch(['lobby', 'no100%', 'destroy', 'start_destroy', 'REWARD', 'cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
-        time.sleep(2)
+        destroy_item(my_player, 'no100%')
     # 友情点
     if my_player.exist(['friend']):
         my_player.find_touch(['friend', 'give', 'confirm', 'close', 'close', 'lobby'])
-        time.sleep(2)
     # 邮箱
     if my_player.exist(['mail']):
-        my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close', 'lobby'])
-        time.sleep(2)
+        my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close_3', 'lobby'])
     # 商店每日免费物品
     if my_player.exist(['shop']):
         my_player.find_touch(['shop', '0'])
         time.sleep(3.5)
         my_player.find_touch(['buy', 'REWARD', 'home', 'home'])
-        time.sleep(2)
-    # 付费商店每日钻石
+        time.sleep(my_player.interval)
+    # 付费商店每日,每周,每月钻石
     if my_player.exist(['pay_shop']):
         my_player.find_touch(['pay_shop', 'gift'])
-        time.sleep(2)
+        time.sleep(my_player.interval)
+
         if my_player.exist(['everymonth']):
-            my_player.find_touch(['everymonth', 'free_diamond', 'REWARD'])
-            time.sleep(2)
+            claim_free_diamond(my_player, ['everymonth'])
+
         if my_player.exist(['everyweek']):
-            my_player.find_touch(['everyweek', 'free_diamond', 'REWARD'])
-            time.sleep(2)
-        my_player.find_touch(['everyday', 'free_diamond', 'REWARD', 'home'])
-        time.sleep(2)
+            claim_free_diamond(my_player, ['everyweek'])
+
+        claim_free_diamond(my_player, ['everyday'])
+
+        my_player.find_touch(['home'])
     # 特殊竞技场收米
     if my_player.exist(['ark']):
         my_player.find_touch(
             ['ark', 'arena', 'arena', 'special_arena', 'special_arena', 'touch', 'gain_reward_2', 'REWARD', 'home'])
-        time.sleep(2)
+        time.sleep(my_player.interval)
     # 任务委托收米
     if my_player.exist(['base']):
         my_player.find_touch(['base'])
         time.sleep(5.5)
         my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
-        time.sleep(4)
+        time.sleep(5)
     # 日常任务
     if my_player.exist(['mission']):
         my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
     # 露菲弹窗广告
     if my_player.exist(['ad']):
         my_player.find_touch(['ad', 'confirm_2'])
-        time.sleep(2)
 
 
 def recruit():
@@ -119,14 +116,30 @@ def simulation_room():
 def auto_consult():
     if my_player.exist(['nikke']):
         my_player.find_touch(['nikke', 'consult'])
-        time.sleep(2)
+        time.sleep(1)
     if my_player.exist(['nikke_consult']):
         my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
-        time.sleep(2)
+        time.sleep(1)
     if my_player.exist(['consult_option']):
         my_player.find_touch(['consult_option', 'skip', 'back'])
-        time.sleep(2)
+        time.sleep(1)
     if my_player.exist(['rank_up']):
         my_player.find_touch(['rank_up', 'back'])
+
+
+def destroy_item(player, location):
+    player.find_touch(['lobby', location, 'destroy'])
+
+    if player.exist(['start_destroy']):
+        player.find_touch(['start_destroy', 'REWARD'])
+
+    player.find_touch(['cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
+
+
+def claim_free_diamond(player, location):
+    player.find_touch(location)
+
+    if player.exist(['free_diamond']):
+        player.find_touch(['free_diamond', 'REWARD'])
 
 
