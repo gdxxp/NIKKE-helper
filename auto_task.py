@@ -21,7 +21,7 @@ def gain_rewards():
         destroy_item(my_player, 'no100%')
     # 友情点
     if my_player.exist(['friend']):
-        my_player.find_touch(['friend', 'give', 'confirm', 'close', 'close', 'lobby'])
+        my_player.find_touch(['friend', 'give', 'confirm', 'close', 'lobby'])
     # 邮箱
     if my_player.exist(['mail']):
         my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close_3', 'lobby'])
