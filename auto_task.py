@@ -96,13 +96,13 @@ def simulation_room():
         time.sleep(0.5)
 
         if my_player.exist(['EPIC']):
-            my_player.find_touch(['EPIC', 'confirm', 'confirm_4'])
+            my_player.find_touch(['EPIC', 'confirm_7', 'confirm_4'])
         elif my_player.exist(['SSR']):
-            my_player.find_touch(['SSR', 'confirm', 'confirm_4'])
+            my_player.find_touch(['SSR', 'confirm_7', 'confirm_4'])
         elif my_player.exist(['SR']):
-            my_player.find_touch(['SR', 'confirm', 'confirm_4'])
+            my_player.find_touch(['SR', 'confirm_7', 'confirm_4'])
         elif my_player.exist(['R']):
-            my_player.find_touch(['R', 'confirm', 'confirm_4'])
+            my_player.find_touch(['R', 'confirm_7', 'confirm_4'])
 
         if my_player.exist(['enter_B']):
             my_player.find_touch(['enter_B'])
