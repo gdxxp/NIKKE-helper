@@ -1,6 +1,8 @@
 import time
+from enum import Enum
 
 from auto_player import Player
+from main import Window
 
 my_player = Player(accuracy=0.8, adb_mode=False)
 
@@ -81,19 +83,17 @@ def simulation_room():
         elif my_player.exist(['boss_battle']):
             my_player.find_touch(['boss_battle'])
         elif my_player.exist(['treatment_room']):
-            my_player.find_touch(['treatment_room', 'cure', 'confirm_5'])
-            time.sleep(1)
-            my_player.find_touch(['confirm_5'])
+            my_player.find_touch(['treatment_room', 'cure', 'confirm_5', 'confirm_5'])
         elif my_player.exist(['cure']):
             my_player.find_touch(['cure', 'confirm_5', 'confirm_5'])
 
         if my_player.exist(['quick_battle']):
             my_player.find_touch(['quick_battle'])
-        else:
+        elif my_player.exist(['enter_battle']):
             my_player.find_touch(['enter_battle'])
 
-        my_player.find_touch(['next_step'])
-        time.sleep(0.5)
+        if my_player.exist(['next_step']):
+            my_player.find_touch(['next_step'])
 
         if my_player.exist(['EPIC']):
             my_player.find_touch(['EPIC', 'confirm_7', 'confirm_4'])
@@ -116,13 +116,10 @@ def simulation_room():
 def auto_consult():
     if my_player.exist(['nikke']):
         my_player.find_touch(['nikke', 'consult'])
-        time.sleep(1)
     if my_player.exist(['nikke_consult']):
         my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
-        time.sleep(1)
     if my_player.exist(['consult_option']):
         my_player.find_touch(['consult_option', 'skip', 'back'])
-        time.sleep(1)
     if my_player.exist(['rank_up']):
         my_player.find_touch(['rank_up', 'back'])
 
@@ -143,3 +140,8 @@ def claim_free_diamond(player, location):
         player.find_touch(['free_diamond', 'REWARD'])
 
 
+class Direction(Enum):
+    RIGHT = 0
+    UP = 1
+    LEFT = 2
+    DOWN = 3

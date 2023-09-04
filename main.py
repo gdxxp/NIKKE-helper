@@ -27,9 +27,7 @@ class TaskThread(QtCore.QThread):
                 auto_task.recruit()
                 time.sleep(1)
         elif self.task_number == 3:
-            while True:
-                auto_task.simulation_room()
-                time.sleep(1)
+            auto_task.simulation_room()
         elif self.task_number == 4:
             while True:
                 auto_task.auto_consult()

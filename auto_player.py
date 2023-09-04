@@ -207,6 +207,27 @@ class Player(object):
             time.sleep(self.interval)
         return re
 
+    # 寻找目标，点击偏移指定方向距离的目标
+    def find_touch_skewing(self, name_list, direction, distance):
+        re = False
+        name_list = name_list if type(name_list) == list else [name_list, ]
+        for name in name_list:
+            background = self.screen_shot()
+            loc_pos = self.locate(background, name)
+            if len(loc_pos) > 0:
+                if direction == 0:
+                    loc_pos[0][0] += distance
+                elif direction == 1:
+                    loc_pos[0][1] += distance
+                elif direction == 2:
+                    loc_pos[0][0] -= distance
+                else:
+                    loc_pos[0][1] -= distance
+                self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
+                re = name
+            time.sleep(self.interval)
+        return re
+
     # 修改精确度
     def change_accuracy(self, new_accuracy):
         self.accuracy = new_accuracy
