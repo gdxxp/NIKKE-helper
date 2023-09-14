@@ -1,6 +1,7 @@
 import os
 import random
 import time
+import math
 
 import cv2
 import numpy
@@ -215,14 +216,9 @@ class Player(object):
             background = self.screen_shot()
             loc_pos = self.locate(background, name)
             if len(loc_pos) > 0:
-                if direction == 0:
-                    loc_pos[0][0] += distance
-                elif direction == 1:
-                    loc_pos[0][1] += distance
-                elif direction == 2:
-                    loc_pos[0][0] -= distance
-                else:
-                    loc_pos[0][1] -= distance
+                t = loc_pos[0]
+                new_t = (t[0] + distance * math.cos(math.radians(direction)), t[1] + distance * math.sin(math.radians(direction)))
+                loc_pos[0] = new_t
                 self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
                 re = name
             time.sleep(self.interval)

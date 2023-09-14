@@ -16,6 +16,7 @@ def change_interval(new_interval):
 
 
 def gain_rewards():
+
     # 仓库收米
     if my_player.exist(['100%']):
         destroy_item(my_player, '100%')
@@ -61,6 +62,14 @@ def gain_rewards():
     # 日常任务
     if my_player.exist(['mission']):
         my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
+    # pass
+    if my_player.exist(['friend']):
+        my_player.find_touch_skewing(['friend'], 270, 50)
+        my_player.find_touch(['mission_2', 'gain_all_3'])
+        if my_player.exist(['rank_up_2']):
+            my_player.find_touch_skewing(['rank_up_2'], 270, 80)
+            my_player.find_touch(['gain_all_3'])
+        my_player.find_touch(['friend'])
     # 露菲弹窗广告
     if my_player.exist(['ad']):
         my_player.find_touch(['ad', 'confirm_2'])
@@ -139,9 +148,3 @@ def claim_free_diamond(player, location):
     if player.exist(['free_diamond']):
         player.find_touch(['free_diamond', 'REWARD'])
 
-
-class Direction(Enum):
-    RIGHT = 0
-    UP = 1
-    LEFT = 2
-    DOWN = 3
