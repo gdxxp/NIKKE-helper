@@ -1,8 +1,6 @@
 import time
-from enum import Enum
 
 from auto_player import Player
-from main import Window
 
 my_player = Player(accuracy=0.8, adb_mode=False)
 
@@ -131,6 +129,18 @@ def auto_consult():
         my_player.find_touch(['consult_option', 'skip', 'back'])
     if my_player.exist(['rank_up']):
         my_player.find_touch(['rank_up', 'back'])
+
+
+def auto_arena():
+    if my_player.exist(['ark']):
+        my_player.find_touch(['ark', 'arena', 'arena', 'rookie_arena'])
+    if my_player.exist(['rookie_arena']):
+        my_player.find_touch(['rookie_arena'])
+    if my_player.exist(['enter_battle_2']):
+        my_player.find_touch_skewing(['enter_battle_2'], 90, 163)
+        my_player.find_touch(['enter_battle_3'])
+    if my_player.exist(['win']):
+        my_player.find_touch(['win'])
 
 
 def destroy_item(player, location):

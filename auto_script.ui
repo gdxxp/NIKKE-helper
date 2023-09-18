@@ -216,7 +216,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton5">
+  <widget class="QPushButton" name="initButton">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -232,6 +232,24 @@
    </property>
    <property name="text">
     <string>矫正窗口</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton5">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>150</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>竞技场</string>
    </property>
   </widget>
  </widget>

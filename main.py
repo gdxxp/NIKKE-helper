@@ -32,6 +32,10 @@ class TaskThread(QtCore.QThread):
             while True:
                 auto_task.auto_consult()
                 time.sleep(1)
+        elif self.task_number == 5:
+            while True:
+                auto_task.auto_arena()
+                time.sleep(1)
 
 
 class Window(QtWidgets.QWidget):
@@ -44,6 +48,7 @@ class Window(QtWidgets.QWidget):
         self.ui.pushButton2.clicked.connect(self.run_task2)
         self.ui.pushButton3.clicked.connect(self.run_task3)
         self.ui.pushButton4.clicked.connect(self.run_task4)
+        self.ui.pushButton5.clicked.connect(self.run_task5)
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
 
@@ -63,6 +68,7 @@ class Window(QtWidgets.QWidget):
         self.task2_thread = TaskThread(2)
         self.task3_thread = TaskThread(3)
         self.task4_thread = TaskThread(4)
+        self.task5_thread = TaskThread(5)
 
     def run_task1(self):
         if self.current_thread:
@@ -94,6 +100,14 @@ class Window(QtWidgets.QWidget):
         self.current_task = "自动咨询"
         self.current_thread = self.task4_thread
         self.task4_thread.start()
+        self.start_timer()
+
+    def run_task5(self):
+        if self.current_thread:
+            self.stop_task()
+        self.current_task = "新人竞技场"
+        self.current_thread = self.task5_thread
+        self.task5_thread.start()
         self.start_timer()
 
     def stop_task(self):
