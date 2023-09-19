@@ -62,11 +62,12 @@ def gain_rewards():
         my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
     # pass
     if my_player.exist(['friend']):
+        if my_player.exist(['gain_all_3']):
+            my_player.find_touch(['gain_all_3'])
         my_player.find_touch_skewing(['friend'], 270, 50)
         my_player.find_touch(['mission_2', 'gain_all_3'])
         if my_player.exist(['rank_up_2']):
             my_player.find_touch_skewing(['rank_up_2'], 270, 80)
-            my_player.find_touch(['gain_all_3'])
         my_player.find_touch(['friend'])
     # 露菲弹窗广告
     if my_player.exist(['ad']):
