@@ -44,11 +44,11 @@ class Window(QtWidgets.QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        self.ui.pushButton1.clicked.connect(self.run_task1)
-        self.ui.pushButton2.clicked.connect(self.run_task2)
-        self.ui.pushButton3.clicked.connect(self.run_task3)
-        self.ui.pushButton4.clicked.connect(self.run_task4)
-        self.ui.pushButton5.clicked.connect(self.run_task5)
+        self.ui.pushButton1.clicked.connect(lambda: self.run_task(1, "收米"))
+        self.ui.pushButton2.clicked.connect(lambda: self.run_task(2, "连续单抽"))
+        self.ui.pushButton3.clicked.connect(lambda: self.run_task(3, "模拟室"))
+        self.ui.pushButton4.clicked.connect(lambda: self.run_task(4, "自动咨询"))
+        self.ui.pushButton5.clicked.connect(lambda: self.run_task(5, "竞技场"))
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
 
@@ -70,44 +70,12 @@ class Window(QtWidgets.QWidget):
         self.task4_thread = TaskThread(4)
         self.task5_thread = TaskThread(5)
 
-    def run_task1(self):
+    def run_task(self, task_number, task_name):
         if self.current_thread:
             self.stop_task()
-        self.current_task = "收米"
-        self.current_thread = self.task1_thread
-        self.task1_thread.start()
-        self.start_timer()
-
-    def run_task2(self):
-        if self.current_thread:
-            self.stop_task()
-        self.current_task = "连续单抽"
-        self.current_thread = self.task2_thread
-        self.task2_thread.start()
-        self.start_timer()
-
-    def run_task3(self):
-        if self.current_thread:
-            self.stop_task()
-        self.current_task = "模拟室"
-        self.current_thread = self.task3_thread
-        self.task3_thread.start()
-        self.start_timer()
-
-    def run_task4(self):
-        if self.current_thread:
-            self.stop_task()
-        self.current_task = "自动咨询"
-        self.current_thread = self.task4_thread
-        self.task4_thread.start()
-        self.start_timer()
-
-    def run_task5(self):
-        if self.current_thread:
-            self.stop_task()
-        self.current_task = "新人竞技场"
-        self.current_thread = self.task5_thread
-        self.task5_thread.start()
+        self.current_task = task_name
+        self.current_thread = getattr(self, f"task{task_number}_thread")
+        self.current_thread.start()
         self.start_timer()
 
     def stop_task(self):
