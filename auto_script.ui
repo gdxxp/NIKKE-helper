@@ -249,7 +249,25 @@
     </font>
    </property>
    <property name="text">
-    <string>竞技场</string>
+    <string>竞拦塔</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton6">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>240</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>联盟战</string>
    </property>
   </widget>
  </widget>

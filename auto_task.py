@@ -144,6 +144,25 @@ def auto_arena():
         my_player.find_touch(['win'])
 
 
+def union_battle():
+    if my_player.exist(['friend']):
+        my_player.find_touch_skewing(['friend'], 90, 60)
+        my_player.find_touch(['union_attack', 'skip_reward', 'confirm_8'])
+    if my_player.exist(['union_attack_2']):
+        my_player.find_touch_skewing(['union_attack_2'], 90, 285)
+    if my_player.exist(['enter_union_battle']):
+        my_player.find_touch(['enter_union_battle'])
+    elif my_player.exist(['02']):
+        my_player.find_touch(['02', 'enter_union_battle'])
+    elif my_player.exist(['03']):
+        my_player.find_touch(['03', 'enter_union_battle'])
+
+    if my_player.exist(['next_step']):
+        my_player.find_touch(['next_step'])
+    if my_player.exist(['confirm_8']):
+        my_player.find_touch(['confirm_8'])
+
+
 def destroy_item(player, location):
     player.find_touch(['lobby', location, 'destroy'])
 

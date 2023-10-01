@@ -87,11 +87,15 @@ class Ui_Form(object):
         self.initButton = QPushButton(Form)
         self.initButton.setObjectName(u"initButton")
         self.initButton.setGeometry(QRect(170, 60, 101, 51))
-        self.initButton.setFont(font1)
+        self.initButton.setFont(font1);
         self.pushButton5 = QPushButton(Form)
         self.pushButton5.setObjectName(u"pushButton5")
         self.pushButton5.setGeometry(QRect(170, 150, 101, 51))
         self.pushButton5.setFont(font1)
+        self.pushButton6 = QPushButton(Form)
+        self.pushButton6.setObjectName(u"pushButton6")
+        self.pushButton6.setGeometry(QRect(170, 240, 101, 51))
+        self.pushButton6.setFont(font1)
 
         self.retranslateUi(Form)
 
@@ -110,5 +114,6 @@ class Ui_Form(object):
         self.label_3.setText("")
         self.initButton.setText(QCoreApplication.translate("Form", u"\u77eb\u6b63\u7a97\u53e3", None))
         self.pushButton5.setText(QCoreApplication.translate("Form", u"\u7ade\u6280\u573a", None))
+        self.pushButton6.setText(QCoreApplication.translate("Form", u"\u8054\u76df\u6218", None))
     # retranslateUi
 
