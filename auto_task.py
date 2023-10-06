@@ -142,6 +142,8 @@ def auto_arena():
         my_player.find_touch(['enter_battle_3'])
     if my_player.exist(['win']):
         my_player.find_touch(['win'])
+    if my_player.exist(['lose']):
+        my_player.find_touch(['lose'])
 
 
 def union_battle():
