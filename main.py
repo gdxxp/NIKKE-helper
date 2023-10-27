@@ -29,16 +29,16 @@ class TaskThread(QtCore.QThread):
         elif self.task_number == 3:
             auto_task.simulation_room()
         elif self.task_number == 4:
-            while True:
-                auto_task.auto_consult()
-                time.sleep(1)
+            auto_task.auto_consult()
         elif self.task_number == 5:
-            while True:
-                auto_task.auto_arena()
-                time.sleep(1)
+            auto_task.auto_arena()
         elif self.task_number == 6:
             while True:
                 auto_task.union_battle()
+                time.sleep(1)
+        elif self.task_number == 7:
+            while True:
+                auto_task.auto_all()
                 time.sleep(1)
 
 
@@ -54,6 +54,7 @@ class Window(QtWidgets.QWidget):
         self.ui.pushButton4.clicked.connect(lambda: self.run_task(4, "自动咨询"))
         self.ui.pushButton5.clicked.connect(lambda: self.run_task(5, "竞技场"))
         self.ui.pushButton6.clicked.connect(lambda: self.run_task(6, "联盟战"))
+        self.ui.pushButton7.clicked.connect(lambda: self.run_task(7, "一键摆烂"))
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
 
@@ -75,6 +76,7 @@ class Window(QtWidgets.QWidget):
         self.task4_thread = TaskThread(4)
         self.task5_thread = TaskThread(5)
         self.task6_thread = TaskThread(6)
+        self.task7_thread = TaskThread(7)
 
     def run_task(self, task_number, task_name):
         if self.current_thread:

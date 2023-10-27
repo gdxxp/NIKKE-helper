@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>391</width>
-    <height>505</height>
+    <width>385</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="font">
@@ -249,7 +249,7 @@
     </font>
    </property>
    <property name="text">
-    <string>竞拦塔</string>
+    <string>竞技场</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton6">
@@ -268,6 +268,24 @@
    </property>
    <property name="text">
     <string>联盟战</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton7">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>330</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Adobe Arabic</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>一键自动</string>
    </property>
   </widget>
  </widget>

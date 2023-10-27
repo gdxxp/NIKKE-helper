@@ -103,6 +103,10 @@ def simulation_room():
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
 
+        if my_player.exist(['repeated_buff']):
+            my_player.find_touch_skewing(['repeated_buff'], 90, 305)
+            my_player.find_touch(['confirm_4'])
+
         if my_player.exist(['EPIC']):
             my_player.find_touch(['EPIC', 'confirm_7', 'confirm_4'])
         elif my_player.exist(['SSR']):
@@ -117,33 +121,50 @@ def simulation_room():
         elif my_player.exist(['enter_C']):
             my_player.find_touch(['enter_C'])
         elif my_player.exist(['end_simulation']):
-            my_player.find_touch(['end_simulation'])
+            my_player.find_touch(['end_simulation', 'confirm_9'])
+            if my_player.exist(['EPIC']):
+                my_player.find_touch(['EPIC', 'confirm_4'])
+            elif my_player.exist(['SSR']):
+                my_player.find_touch(['SSR', 'confirm_4'])
+            elif my_player.exist(['SR']):
+                my_player.find_touch(['SR', 'confirm_4'])
+            elif my_player.exist(['R']):
+                my_player.find_touch(['R', 'confirm_4'])
+            my_player.find_touch(['home'])
             break
 
 
 def auto_consult():
-    if my_player.exist(['nikke']):
-        my_player.find_touch(['nikke', 'consult'])
-    if my_player.exist(['nikke_consult']):
-        my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
-    if my_player.exist(['consult_option']):
-        my_player.find_touch(['consult_option', 'skip', 'back'])
-    if my_player.exist(['rank_up']):
-        my_player.find_touch(['rank_up', 'back'])
+    while True:
+        if my_player.exist(['nikke']):
+            my_player.find_touch(['nikke', 'consult'])
+        if my_player.exist(['nikke_consult']):
+            my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
+        if my_player.exist(['consult_option']):
+            my_player.find_touch(['consult_option', 'skip', 'back'])
+        if my_player.exist(['rank_up']):
+            my_player.find_touch(['rank_up', 'back'])
+        if my_player.exist(['consult_done']):
+            my_player.find_touch(['home'])
+            break
 
 
 def auto_arena():
-    if my_player.exist(['ark']):
-        my_player.find_touch(['ark', 'arena', 'arena', 'rookie_arena'])
-    if my_player.exist(['rookie_arena']):
-        my_player.find_touch(['rookie_arena'])
-    if my_player.exist(['enter_battle_2']):
-        my_player.find_touch_skewing(['enter_battle_2'], 90, 163)
-        my_player.find_touch(['enter_battle_3'])
-    if my_player.exist(['win']):
-        my_player.find_touch(['win'])
-    if my_player.exist(['lose']):
-        my_player.find_touch(['lose'])
+    while True:
+        if my_player.exist(['ark']):
+            my_player.find_touch(['ark', 'arena', 'arena', 'rookie_arena'])
+        if my_player.exist(['rookie_arena']):
+            my_player.find_touch(['rookie_arena'])
+        if my_player.exist(['enter_battle_2']):
+            my_player.find_touch_skewing(['enter_battle_2'], 90, 163)
+            my_player.find_touch(['enter_battle_3'])
+        if my_player.exist(['win']):
+            my_player.find_touch(['win'])
+        if my_player.exist(['lose']):
+            my_player.find_touch(['lose'])
+        if my_player.exist(['enter_battle_4']):
+            my_player.find_touch(['home'])
+            break
 
 
 def union_battle():
@@ -162,7 +183,16 @@ def union_battle():
     if my_player.exist(['next_step']):
         my_player.find_touch(['next_step'])
     if my_player.exist(['confirm_8']):
+        if my_player.exist(['skip_reward']):
+            my_player.find_touch(['skip_reward'])
         my_player.find_touch(['confirm_8'])
+
+
+def auto_all():
+    simulation_room()
+    auto_arena()
+    auto_consult()
+    gain_rewards()
 
 
 def destroy_item(player, location):
