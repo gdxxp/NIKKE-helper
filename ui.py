@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 
-################################################################################
-## Form generated from reading UI file 'auto_script.ui'
-##
-## Created by: Qt User Interface Compiler version 6.5.1
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -16,7 +8,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
-    QSlider, QWidget)
+                               QSlider, QWidget, QToolButton)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -87,7 +79,7 @@ class Ui_Form(object):
         self.initButton = QPushButton(Form)
         self.initButton.setObjectName(u"initButton")
         self.initButton.setGeometry(QRect(170, 60, 101, 51))
-        self.initButton.setFont(font1);
+        self.initButton.setFont(font1)
         self.pushButton5 = QPushButton(Form)
         self.pushButton5.setObjectName(u"pushButton5")
         self.pushButton5.setGeometry(QRect(170, 150, 101, 51))
@@ -100,6 +92,10 @@ class Ui_Form(object):
         self.pushButton7.setObjectName(u"pushButton7")
         self.pushButton7.setGeometry(QRect(170, 330, 101, 51))
         self.pushButton7.setFont(font1)
+        self.toolButton = QToolButton(Form)
+        self.toolButton.setObjectName(u"toolButton")
+        self.toolButton.setGeometry(QRect(280, 360, 46, 21))
+        self.toolButton.setToolButtonStyle(Qt.ToolButtonIconOnly)
 
         self.retranslateUi(Form)
 
@@ -120,5 +116,6 @@ class Ui_Form(object):
         self.pushButton5.setText(QCoreApplication.translate("Form", u"\u7ade\u6280\u573a", None))
         self.pushButton6.setText(QCoreApplication.translate("Form", u"\u8054\u76df\u6218", None))
         self.pushButton7.setText(QCoreApplication.translate("Form", u"\u4e00\u952e\u81ea\u52a8", None))
+        self.toolButton.setText(QCoreApplication.translate("Form", u"...", None))
     # retranslateUi
 

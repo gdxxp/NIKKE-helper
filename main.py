@@ -5,8 +5,11 @@ import threading
 import auto_task
 
 from ui import Ui_Form
+from dialog import Ui_Dialog
 
 from PySide6 import QtWidgets, QtCore
+
+auto_task_list = [True, True, True, True, False]
 
 
 class TaskThread(QtCore.QThread):
@@ -33,12 +36,10 @@ class TaskThread(QtCore.QThread):
         elif self.task_number == 5:
             auto_task.auto_arena()
         elif self.task_number == 6:
-            while True:
-                auto_task.union_battle()
-                time.sleep(1)
+            auto_task.union_battle()
         elif self.task_number == 7:
             while True:
-                auto_task.auto_all()
+                auto_task.auto_all(auto_task_list)
                 time.sleep(1)
 
 
@@ -57,6 +58,7 @@ class Window(QtWidgets.QWidget):
         self.ui.pushButton7.clicked.connect(lambda: self.run_task(7, "一键摆烂"))
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
+        self.ui.toolButton.clicked.connect(self.auto_all_settings)
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
@@ -122,6 +124,36 @@ class Window(QtWidgets.QWidget):
         if window_list:
             print(window_list)
             window_list[1].resizeTo(1037, 811)
+
+    @staticmethod
+    def auto_all_settings():
+        dialog = Dialog()
+        dialog.exec()
+
+
+class Dialog(QtWidgets.QDialog):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+
+        self.ui.checkBox_0.setChecked(auto_task_list[0])
+        self.ui.checkBox_1.setChecked(auto_task_list[1])
+        self.ui.checkBox_2.setChecked(auto_task_list[2])
+        self.ui.checkBox_3.setChecked(auto_task_list[3])
+        self.ui.checkBox_4.setChecked(auto_task_list[4])
+
+        self.ui.checkBox_0.stateChanged.connect(lambda state, index=0: self.auto_task_change(index))
+        self.ui.checkBox_1.stateChanged.connect(lambda state, index=1: self.auto_task_change(index))
+        self.ui.checkBox_2.stateChanged.connect(lambda state, index=2: self.auto_task_change(index))
+        self.ui.checkBox_3.stateChanged.connect(lambda state, index=3: self.auto_task_change(index))
+        self.ui.checkBox_4.stateChanged.connect(lambda state, index=4: self.auto_task_change(index))
+
+    def auto_task_change(self, index):
+        auto_task_list[index] = not auto_task_list[index]
+        check_change = getattr(self.ui, f"checkBox_{index}")
+        check_change.setChecked(auto_task_list[index])
+        print(auto_task_list)
 
 
 if __name__ == "__main__":

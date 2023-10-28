@@ -80,7 +80,7 @@ def recruit():
 
 def simulation_room():
     if my_player.exist(['ark']):
-        my_player.find_touch(['ark', 'simulation_room', 'simulation_room', 'start_simulation_1'])
+        my_player.find_touch(['ark', 'simulation_room', 'simulation_room', 'start_simulation_1', 'difficulty', 'zone'])
         time.sleep(4)
         my_player.find_touch(['start_simulation_2'])
     while True:
@@ -141,6 +141,7 @@ def auto_consult():
         if my_player.exist(['nikke_consult']):
             my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
         if my_player.exist(['consult_option']):
+            time.sleep(1.3)
             my_player.find_touch(['consult_option', 'skip', 'back'])
         if my_player.exist(['rank_up']):
             my_player.find_touch(['rank_up', 'back'])
@@ -168,31 +169,44 @@ def auto_arena():
 
 
 def union_battle():
-    if my_player.exist(['friend']):
-        my_player.find_touch_skewing(['friend'], 90, 60)
-        my_player.find_touch(['union_attack', 'skip_reward', 'confirm_8'])
-    if my_player.exist(['union_attack_2']):
-        my_player.find_touch_skewing(['union_attack_2'], 90, 285)
-    if my_player.exist(['enter_union_battle']):
-        my_player.find_touch(['enter_union_battle'])
-    elif my_player.exist(['02']):
-        my_player.find_touch(['02', 'enter_union_battle'])
-    elif my_player.exist(['03']):
-        my_player.find_touch(['03', 'enter_union_battle'])
+    while True:
+        if my_player.exist(['friend']):
+            my_player.find_touch_skewing(['friend'], 90, 60)
+            my_player.find_touch(['union_attack', 'skip_reward', 'confirm_8'])
+        if my_player.exist(['union_attack_2']):
+            my_player.find_touch_skewing(['union_attack_2'], 90, 285)
+        if my_player.exist(['enter_union_battle']):
+            my_player.find_touch(['enter_union_battle'])
+        elif my_player.exist(['02']):
+            my_player.find_touch(['02', 'enter_union_battle'])
+            if my_player.exist(['battle_times_done']):
+                my_player.find_touch(['home'])
+                break
+        elif my_player.exist(['03']):
+            my_player.find_touch(['03', 'enter_union_battle'])
+            if my_player.exist(['battle_times_done']):
+                my_player.find_touch(['home'])
+                break
 
-    if my_player.exist(['next_step']):
-        my_player.find_touch(['next_step'])
-    if my_player.exist(['confirm_8']):
-        if my_player.exist(['skip_reward']):
-            my_player.find_touch(['skip_reward'])
-        my_player.find_touch(['confirm_8'])
+        if my_player.exist(['next_step']):
+            my_player.find_touch(['next_step'])
+        if my_player.exist(['confirm_8']):
+            if my_player.exist(['skip_reward']):
+                my_player.find_touch(['skip_reward'])
+            my_player.find_touch(['confirm_8'])
 
 
-def auto_all():
-    simulation_room()
-    auto_arena()
-    auto_consult()
-    gain_rewards()
+def auto_all(auto_task_list):
+    if auto_task_list[0]:
+        simulation_room()
+    if auto_task_list[1]:
+        auto_arena()
+    if auto_task_list[2]:
+        auto_consult()
+    if auto_task_list[4]:
+        union_battle()
+    if auto_task_list[3]:
+        gain_rewards()
 
 
 def destroy_item(player, location):
