@@ -163,7 +163,7 @@ def auto_arena():
             my_player.find_touch(['win'])
         if my_player.exist(['lose']):
             my_player.find_touch(['lose'])
-        if my_player.exist(['enter_battle_4']):
+        if my_player.exist(['enter_battle_4']) and not my_player.exist(['enter_battle_2']):
             my_player.find_touch(['home'])
             break
 
