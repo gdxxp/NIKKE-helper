@@ -193,6 +193,21 @@ def union_battle():
             my_player.find_touch(['confirm_8'])
 
 
+def interception_battle():
+    if my_player.exist(['ark']):
+        my_player.find_touch(['ark', 'interception', 'interception'])
+    if my_player.exist(['interception_battle']):
+        my_player.find_touch_skewing(['interception_battle'], 90, 170)
+    if my_player.exist(['quick_battle']):
+        my_player.find_touch(['quick_battle', 'next_step'])
+    elif my_player.exist(['enter_union_battle']):
+        my_player.find_touch(['enter_union_battle'])
+    else:
+        my_player.find_touch(['home'])
+    if my_player.exist(['next_step']):
+        my_player.find_touch(['next_step'])
+
+
 def auto_all(auto_task_list):
     if auto_task_list[0]:
         simulation_room()
@@ -202,6 +217,8 @@ def auto_all(auto_task_list):
         auto_consult()
     if auto_task_list[4]:
         union_battle()
+    if auto_task_list[5]:
+        interception_battle()
     if auto_task_list[3]:
         gain_rewards()
 
