@@ -198,8 +198,8 @@ def interception_battle():
         my_player.find_touch(['ark', 'interception', 'interception'])
     if my_player.exist(['interception_battle']):
         my_player.find_touch_skewing(['interception_battle'], 90, 170)
-    if my_player.exist(['quick_battle']):
-        my_player.find_touch(['quick_battle', 'next_step'])
+    if my_player.exist(['quick_battle_2']):
+        my_player.find_touch(['quick_battle_2', 'next_step'])
     elif my_player.exist(['enter_union_battle']):
         my_player.find_touch(['enter_union_battle'])
     else:
