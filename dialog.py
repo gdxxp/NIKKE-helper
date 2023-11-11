@@ -33,6 +33,9 @@ class Ui_Dialog(object):
         self.checkBox_5 = QCheckBox(Dialog)
         self.checkBox_5.setObjectName(u"checkBox_5")
         self.checkBox_5.setGeometry(QRect(120, 50, 91, 19))
+        self.checkBox_6 = QCheckBox(Dialog)
+        self.checkBox_6.setObjectName(u"checkBox")
+        self.checkBox_6.setGeometry(QRect(120, 80, 91, 19))
 
         self.retranslateUi(Dialog)
 
@@ -47,4 +50,5 @@ class Ui_Dialog(object):
         self.checkBox_3.setText(QCoreApplication.translate("Dialog", u"\u6536\u7c73", None))
         self.checkBox_4.setText(QCoreApplication.translate("Dialog", u"\u8054\u76df\u6218", None))
         self.checkBox_5.setText(QCoreApplication.translate("Dialog", u"\u62e6\u622a\u6218", None))
+        self.checkBox_6.setText(QCoreApplication.translate("Dialog", u"\u5355\u4eba\u7a81\u88ad", None))
     # retranslateUi

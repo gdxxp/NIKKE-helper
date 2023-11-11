@@ -212,11 +212,18 @@ def interception_battle():
 
 def single_raids():
     while True:
+        if my_player.exist(['challenge_mode']):
+            my_player.find_touch(['7'])
         if my_player.exist(['single_raids']):
             my_player.find_touch(['single_raids'])
-        if my_player.exist(['challenge']):
+        if my_player.exist(['quick_battle_2']):
+            my_player.find_touch(['quick_battle_2'])
+        elif my_player.exist(['challenge']):
             my_player.find_touch(['challenge', 'confirm_2'])
         if my_player.exist(['enter_union_battle']):
+            my_player.find_touch(['enter_union_battle'])
+        elif my_player.exist(['team_set']):
+            my_player.find_touch_skewing(['team_set'], 0, 43)
             my_player.find_touch(['enter_union_battle'])
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
@@ -238,6 +245,8 @@ def auto_all(auto_task_list):
         union_battle()
     if auto_task_list[5]:
         interception_battle()
+    if auto_task_list[6]:
+        single_raids()
     if auto_task_list[3]:
         gain_rewards()
 

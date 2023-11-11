@@ -9,7 +9,7 @@ from dialog import Ui_Dialog
 
 from PySide6 import QtWidgets, QtCore
 
-auto_task_list = [True, True, True, True, False, False]
+auto_task_list = [True, True, True, True, False, False, False]
 
 
 class TaskThread(QtCore.QThread):
@@ -143,6 +143,7 @@ class Dialog(QtWidgets.QDialog):
         self.ui.checkBox_3.setChecked(auto_task_list[3])
         self.ui.checkBox_4.setChecked(auto_task_list[4])
         self.ui.checkBox_5.setChecked(auto_task_list[5])
+        self.ui.checkBox_6.setChecked(auto_task_list[6])
 
         self.ui.checkBox_0.stateChanged.connect(lambda state, index=0: self.auto_task_change(index))
         self.ui.checkBox_1.stateChanged.connect(lambda state, index=1: self.auto_task_change(index))
@@ -150,6 +151,7 @@ class Dialog(QtWidgets.QDialog):
         self.ui.checkBox_3.stateChanged.connect(lambda state, index=3: self.auto_task_change(index))
         self.ui.checkBox_4.stateChanged.connect(lambda state, index=4: self.auto_task_change(index))
         self.ui.checkBox_5.stateChanged.connect(lambda state, index=5: self.auto_task_change(index))
+        self.ui.checkBox_6.stateChanged.connect(lambda state, index=6: self.auto_task_change(index))
 
     def auto_task_change(self, index):
         auto_task_list[index] = not auto_task_list[index]
