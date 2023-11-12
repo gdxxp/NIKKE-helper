@@ -217,7 +217,8 @@ def single_raids():
         if my_player.exist(['single_raids']):
             my_player.find_touch(['single_raids'])
         if my_player.exist(['quick_battle_2']):
-            my_player.find_touch(['quick_battle_2'])
+            my_player.find_touch(['quick_battle_2', 'max'])
+            my_player.find_touch_skewing(['max'], 35, 100)
         elif my_player.exist(['challenge']):
             my_player.find_touch(['challenge', 'confirm_2'])
         if my_player.exist(['enter_union_battle']):
