@@ -22,9 +22,7 @@ class TaskThread(QtCore.QThread):
     def run(self):
         self.start_time = time.time()  # 记录任务开始时间
         if self.task_number == 1:
-            while True:
-                auto_task.gain_rewards()
-                time.sleep(1)
+            auto_task.gain_rewards()
         elif self.task_number == 2:
             while True:
                 auto_task.recruit()

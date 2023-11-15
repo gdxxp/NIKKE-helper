@@ -14,64 +14,66 @@ def change_interval(new_interval):
 
 
 def gain_rewards():
+    while True:
+        # 仓库收米
+        if my_player.exist(['100%']):
+            destroy_item(my_player, '100%')
+        elif my_player.exist(['no100%']):
+            destroy_item(my_player, 'no100%')
+        # 友情点
+        if my_player.exist(['friend']):
+            my_player.find_touch(['friend', 'give', 'confirm', 'close'])
+        # 邮箱
+        if my_player.exist(['mail']):
+            my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close_3'])
+        # 商店每日免费物品
+        if my_player.exist(['shop']):
+            my_player.find_touch(['shop', '0'])
+            time.sleep(3.5)
+            my_player.find_touch(['buy', 'REWARD', 'home', 'home'])
+            time.sleep(my_player.interval)
+        # 付费商店每日,每周,每月钻石
+        if my_player.exist(['pay_shop']):
+            my_player.find_touch(['pay_shop', 'gift'])
+            time.sleep(my_player.interval)
 
-    # 仓库收米
-    if my_player.exist(['100%']):
-        destroy_item(my_player, '100%')
-    elif my_player.exist(['no100%']):
-        destroy_item(my_player, 'no100%')
-    # 友情点
-    if my_player.exist(['friend']):
-        my_player.find_touch(['friend', 'give', 'confirm', 'close'])
-    # 邮箱
-    if my_player.exist(['mail']):
-        my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close_3'])
-    # 商店每日免费物品
-    if my_player.exist(['shop']):
-        my_player.find_touch(['shop', '0'])
-        time.sleep(3.5)
-        my_player.find_touch(['buy', 'REWARD', 'home', 'home'])
-        time.sleep(my_player.interval)
-    # 付费商店每日,每周,每月钻石
-    if my_player.exist(['pay_shop']):
-        my_player.find_touch(['pay_shop', 'gift'])
-        time.sleep(my_player.interval)
+            if my_player.exist(['everymonth']):
+                claim_free_diamond(my_player, ['everymonth'])
 
-        if my_player.exist(['everymonth']):
-            claim_free_diamond(my_player, ['everymonth'])
+            if my_player.exist(['everyweek']):
+                claim_free_diamond(my_player, ['everyweek'])
 
-        if my_player.exist(['everyweek']):
-            claim_free_diamond(my_player, ['everyweek'])
+            claim_free_diamond(my_player, ['everyday'])
 
-        claim_free_diamond(my_player, ['everyday'])
-
-        my_player.find_touch(['home'])
-    # 特殊竞技场收米
-    if my_player.exist(['ark']):
-        my_player.find_touch(
-            ['ark', 'arena', 'arena', 'special_arena', 'special_arena', 'touch', 'gain_reward_2', 'REWARD', 'home'])
-        time.sleep(my_player.interval)
-    # 任务委托收米
-    if my_player.exist(['base']):
-        my_player.find_touch(['base'])
-        time.sleep(5.5)
-        my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
-        time.sleep(5)
-    # 日常任务
-    if my_player.exist(['mission']):
-        my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
-    # pass
-    if my_player.exist(['friend']):
-        if my_player.exist(['gain_all_3']):
-            my_player.find_touch(['gain_all_3'])
-        my_player.find_touch_skewing(['friend'], 270, 50)
-        my_player.find_touch(['mission_2', 'gain_all_3'])
-        if my_player.exist(['rank_up_2']):
-            my_player.find_touch_skewing(['rank_up_2'], 270, 80)
-        my_player.find_touch(['friend'])
-    # 露菲弹窗广告
-    if my_player.exist(['ad']):
-        my_player.find_touch(['ad', 'confirm_2'])
+            my_player.find_touch(['home'])
+        # 特殊竞技场收米
+        if my_player.exist(['ark']):
+            my_player.find_touch(
+                ['ark', 'arena', 'arena', 'special_arena', 'special_arena', 'touch', 'gain_reward_2', 'REWARD', 'home'])
+            time.sleep(my_player.interval)
+        # 任务委托收米
+        if my_player.exist(['base']):
+            my_player.find_touch(['base'])
+            time.sleep(6)
+            my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
+            time.sleep(6)
+        # pass
+        if my_player.exist(['friend']):
+            if my_player.exist(['gain_all_3']):
+                my_player.find_touch(['gain_all_3'])
+            my_player.find_touch_skewing(['friend'], 270, 50)
+            my_player.find_touch(['mission_2', 'gain_all_3'])
+            if my_player.exist(['rank_up_2']):
+                my_player.find_touch_skewing(['rank_up_2'], 270, 80)
+            my_player.find_touch(['friend'])
+        # 日常任务
+        if my_player.exist(['mission']):
+            my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
+            if my_player.exist(['000']):
+                break
+        # 露菲弹窗广告
+        if my_player.exist(['ad']):
+            my_player.find_touch(['ad', 'confirm_2'])
 
 
 def recruit():
