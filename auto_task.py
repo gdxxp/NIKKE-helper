@@ -59,9 +59,9 @@ def gain_rewards():
             time.sleep(6)
         # pass
         if my_player.exist(['friend']):
-            if my_player.exist(['gain_all_3']):
-                my_player.find_touch(['gain_all_3'])
             my_player.find_touch_skewing(['friend'], 270, 50)
+            if my_player.exist(['gain_all_3']):
+                my_player.find_touch(['gain_all_3', 'REWARD'])
             my_player.find_touch(['mission_2', 'gain_all_3'])
             if my_player.exist(['rank_up_2']):
                 my_player.find_touch_skewing(['rank_up_2'], 270, 80)
