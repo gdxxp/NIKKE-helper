@@ -174,6 +174,7 @@ def union_battle():
     while True:
         if my_player.exist(['friend']):
             my_player.find_touch_skewing(['friend'], 90, 60)
+        if my_player.exist(['union_attack']):
             my_player.find_touch(['union_attack', 'skip_reward', 'skip_reward', 'confirm_8'])
         if my_player.exist(['union_attack_2']):
             my_player.find_touch_skewing(['union_attack_2'], 90, 285)
