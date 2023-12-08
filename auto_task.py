@@ -142,6 +142,8 @@ def auto_consult():
             my_player.find_touch(['nikke', 'consult'])
         if my_player.exist(['nikke_consult']):
             my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
+        if my_player.exist(['auto']):
+            my_player.find_touch(['auto'])
         if my_player.exist(['confirm_6']):
             my_player.find_touch(['confirm_6'])
         if my_player.exist(['consult_option']):
