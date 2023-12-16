@@ -224,6 +224,13 @@ class Player(object):
             time.sleep(self.interval)
         return re
 
+    @staticmethod
+    def continuous_click():
+        pyautogui.mouseDown()
+        time.sleep(0.23)
+        pyautogui.mouseUp()
+        time.sleep(0.021)
+
     # 修改精确度
     def change_accuracy(self, new_accuracy):
         self.accuracy = new_accuracy

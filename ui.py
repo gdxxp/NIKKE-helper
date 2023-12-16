@@ -8,7 +8,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
-                               QSlider, QWidget, QToolButton)
+                               QSlider, QWidget, QToolButton, QCheckBox)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -96,6 +96,9 @@ class Ui_Form(object):
         self.toolButton.setObjectName(u"toolButton")
         self.toolButton.setGeometry(QRect(280, 360, 46, 21))
         self.toolButton.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self.checkBox = QCheckBox(Form)
+        self.checkBox.setObjectName(u"checkBox")
+        self.checkBox.setGeometry(QRect(40, 400, 101, 21))
 
         self.retranslateUi(Form)
 
@@ -117,5 +120,6 @@ class Ui_Form(object):
         self.pushButton6.setText(QCoreApplication.translate("Form", u"\u8054\u76df\u6218", None))
         self.pushButton7.setText(QCoreApplication.translate("Form", u"\u4e00\u952e\u81ea\u52a8", None))
         self.toolButton.setText(QCoreApplication.translate("Form", u"...", None))
+        self.checkBox.setText(QCoreApplication.translate("Form", u"Q\u952e\u8fde\u70b9", None))
     # retranslateUi
 

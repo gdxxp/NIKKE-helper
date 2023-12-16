@@ -20,25 +20,28 @@ class TaskThread(QtCore.QThread):
         self.start_time = None
 
     def run(self):
-        self.start_time = time.time()  # 记录任务开始时间
-        if self.task_number == 1:
-            auto_task.gain_rewards()
-        elif self.task_number == 2:
-            while True:
-                auto_task.recruit()
-                time.sleep(1)
-        elif self.task_number == 3:
-            auto_task.simulation_room()
-        elif self.task_number == 4:
-            auto_task.auto_consult()
-        elif self.task_number == 5:
-            auto_task.auto_arena()
-        elif self.task_number == 6:
-            auto_task.union_battle()
-        elif self.task_number == 7:
-            while True:
-                auto_task.auto_all(auto_task_list)
-                time.sleep(1)
+        if self.task_number == 8:
+            auto_task.continuous_click()
+        else:
+            self.start_time = time.time()  # 记录任务开始时间
+            if self.task_number == 1:
+                auto_task.gain_rewards()
+            elif self.task_number == 2:
+                while True:
+                    auto_task.recruit()
+                    time.sleep(1)
+            elif self.task_number == 3:
+                auto_task.simulation_room()
+            elif self.task_number == 4:
+                auto_task.auto_consult()
+            elif self.task_number == 5:
+                auto_task.auto_arena()
+            elif self.task_number == 6:
+                auto_task.union_battle()
+            elif self.task_number == 7:
+                while True:
+                    auto_task.auto_all(auto_task_list)
+                    time.sleep(1)
 
 
 class Window(QtWidgets.QWidget):
@@ -57,6 +60,7 @@ class Window(QtWidgets.QWidget):
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
         self.ui.toolButton.clicked.connect(self.auto_all_settings)
+        self.ui.checkBox.stateChanged.connect(lambda state=self.ui.checkBox.isChecked(): self.continuous_click(state))
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
@@ -69,6 +73,7 @@ class Window(QtWidgets.QWidget):
         self.accuracy = 8
         self.interval = 25
 
+        self.click_thread = TaskThread(8)
         self.current_thread = None
         self.task1_thread = TaskThread(1)
         self.task2_thread = TaskThread(2)
@@ -115,6 +120,13 @@ class Window(QtWidgets.QWidget):
         self.interval = self.ui.horizontalSlider_2.value()
         self.ui.label_3.setText(f"操作时间间隔：{self.interval / 10}s")
         auto_task.change_interval(self.interval / 10)
+
+    def continuous_click(self, state: bool):
+        if state:
+            self.click_thread.start()
+        else:
+            if self.click_thread:
+                self.click_thread.terminate()
 
     @staticmethod
     def correct_window():

@@ -1,5 +1,7 @@
 import time
 
+import keyboard as keyboard
+
 from auto_player import Player
 
 my_player = Player(accuracy=0.8, adb_mode=False)
@@ -240,6 +242,12 @@ def single_raids():
         if my_player.exist(['battle_times_done_2']):
             my_player.find_touch(['home'])
             break
+
+
+def continuous_click():
+    while True:
+        if keyboard.is_pressed('q'):
+            my_player.continuous_click()
 
 
 def auto_all(auto_task_list):
