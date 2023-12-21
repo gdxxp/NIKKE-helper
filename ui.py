@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -7,15 +5,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
-                               QSlider, QWidget, QToolButton, QCheckBox)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QLabel, QPushButton,
+    QSizePolicy, QSlider, QToolButton, QWidget)
 
 class Ui_Form(object):
     def setupUi(self, Form):
         if not Form.objectName():
             Form.setObjectName(u"Form")
         Form.setWindowModality(Qt.NonModal)
-        Form.resize(391, 505)
+        Form.resize(385, 506)
         font = QFont()
         font.setFamilies([u"Adobe Arabic"])
         font.setPointSize(9)
@@ -99,6 +97,9 @@ class Ui_Form(object):
         self.checkBox = QCheckBox(Form)
         self.checkBox.setObjectName(u"checkBox")
         self.checkBox.setGeometry(QRect(40, 400, 101, 21))
+        self.checkBox_2 = QCheckBox(Form)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+        self.checkBox_2.setGeometry(QRect(40, 110, 101, 19))
 
         self.retranslateUi(Form)
 
@@ -121,5 +122,4 @@ class Ui_Form(object):
         self.pushButton7.setText(QCoreApplication.translate("Form", u"\u4e00\u952e\u81ea\u52a8", None))
         self.toolButton.setText(QCoreApplication.translate("Form", u"...", None))
         self.checkBox.setText(QCoreApplication.translate("Form", u"Q\u952e\u8fde\u70b9", None))
-    # retranslateUi
-
+        self.checkBox_2.setText(QCoreApplication.translate("Form", u"\u7ade\u6280\u573a\u5546\u5e97", None))

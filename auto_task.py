@@ -15,7 +15,7 @@ def change_interval(new_interval):
     my_player.change_interval(new_interval)
 
 
-def gain_rewards():
+def gain_rewards(arena_shop_task):
     while True:
         # 仓库收米
         if my_player.exist(['100%']):
@@ -31,8 +31,18 @@ def gain_rewards():
         # 商店每日免费物品
         if my_player.exist(['shop']):
             my_player.find_touch(['shop', '0'])
-            time.sleep(3.5)
-            my_player.find_touch(['buy', 'REWARD', 'home', 'home'])
+            my_player.find_touch(['buy', 'REWARD'])
+            if arena_shop_task:
+                my_player.find_touch(['arena_shop'])
+                my_player.find_touch_skewing(['arena_shop_2'], 0, 110)
+                my_player.find_touch(['buy', 'REWARD'])
+                my_player.find_touch_skewing(['arena_shop_2'], 0, 220)
+                my_player.find_touch(['buy', 'REWARD'])
+                my_player.find_touch_skewing(['arena_shop_2'], 0, 330)
+                my_player.find_touch(['buy', 'REWARD'])
+                my_player.find_touch_skewing(['arena_shop_2'], 0, 440)
+                my_player.find_touch(['buy', 'REWARD'])
+            my_player.find_touch(['home', 'home'])
             time.sleep(my_player.interval)
         # 付费商店每日,每周,每月钻石
         if my_player.exist(['pay_shop']):
@@ -88,6 +98,8 @@ def simulation_room():
         time.sleep(4)
         my_player.find_touch(['start_simulation_2'])
     while True:
+        if my_player.exist(['start_simulation_2']):
+            my_player.find_touch(['start_simulation_2'])
         if my_player.exist(['normal_battle']):
             my_player.find_touch(['normal_battle'])
         elif my_player.exist(['hard_battle']):
@@ -250,7 +262,7 @@ def continuous_click():
             my_player.continuous_click()
 
 
-def auto_all(auto_task_list):
+def auto_all(auto_task_list, arena_shop_task):
     if auto_task_list[0]:
         simulation_room()
     if auto_task_list[1]:
@@ -264,7 +276,7 @@ def auto_all(auto_task_list):
     if auto_task_list[6]:
         single_raids()
     if auto_task_list[3]:
-        gain_rewards()
+        gain_rewards(arena_shop_task)
 
 
 def destroy_item(player, location):

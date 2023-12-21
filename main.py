@@ -10,6 +10,7 @@ from dialog import Ui_Dialog
 from PySide6 import QtWidgets, QtCore
 
 auto_task_list = [True, True, True, True, False, False, False]
+arena_shop_task = True
 
 
 class TaskThread(QtCore.QThread):
@@ -25,7 +26,7 @@ class TaskThread(QtCore.QThread):
         else:
             self.start_time = time.time()  # 记录任务开始时间
             if self.task_number == 1:
-                auto_task.gain_rewards()
+                auto_task.gain_rewards(arena_shop_task)
             elif self.task_number == 2:
                 while True:
                     auto_task.recruit()
@@ -40,7 +41,7 @@ class TaskThread(QtCore.QThread):
                 auto_task.union_battle()
             elif self.task_number == 7:
                 while True:
-                    auto_task.auto_all(auto_task_list)
+                    auto_task.auto_all(auto_task_list, arena_shop_task)
                     time.sleep(1)
 
 
@@ -60,13 +61,15 @@ class Window(QtWidgets.QWidget):
         self.ui.stopButton.clicked.connect(self.stop_task)
         self.ui.initButton.clicked.connect(self.correct_window)
         self.ui.toolButton.clicked.connect(self.auto_all_settings)
-        self.ui.checkBox.stateChanged.connect(lambda state=self.ui.checkBox.isChecked(): self.continuous_click(state))
+        self.ui.checkBox.stateChanged.connect(lambda: self.continuous_click())
+        self.ui.checkBox_2.stateChanged.connect(lambda: self.change_arena_shop_task())
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
 
         self.ui.label_2.setText("精确度：0.8")
         self.ui.label_3.setText("操作时间间隔：2.5s")
+        self.ui.checkBox_2.setChecked(True)
 
         self.current_task = None
         self.timer = None
@@ -121,8 +124,12 @@ class Window(QtWidgets.QWidget):
         self.ui.label_3.setText(f"操作时间间隔：{self.interval / 10}s")
         auto_task.change_interval(self.interval / 10)
 
-    def continuous_click(self, state: bool):
-        if state:
+    def change_arena_shop_task(self):
+        global arena_shop_task
+        arena_shop_task = self.ui.checkBox_2.isChecked()
+
+    def continuous_click(self):
+        if self.ui.checkBox.isChecked():
             self.click_thread.start()
         else:
             if self.click_thread:
