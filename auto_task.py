@@ -146,16 +146,17 @@ def simulation_room():
                 my_player.find_touch(['SR', 'confirm_4'])
             elif my_player.exist(['R']):
                 my_player.find_touch(['R', 'confirm_4'])
-            my_player.find_touch(['home'])
+            my_player.find_touch(['home', 'home'])
             break
 
 
 def auto_consult():
     while True:
-        if my_player.exist(['nikke']):
-            my_player.find_touch(['nikke', 'consult'])
+        if my_player.exist(['lobby']):
+            my_player.find_touch_skewing(['lobby'], 180, 145)
+            my_player.find_touch(['consult'])
         if my_player.exist(['nikke_consult']):
-            my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'auto'])
+            my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'confirm_6', 'auto'])
         if my_player.exist(['confirm_6']):
             my_player.find_touch(['confirm_6'])
         if my_player.exist(['consult_option']):
