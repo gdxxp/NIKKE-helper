@@ -93,11 +93,17 @@ class Player(object):
             origin = pyautogui.position()
             dt = random.uniform(0.01, 0.02)
             pyautogui.moveTo(x, y, duration=dt)
-            # pyautogui.mouseDown(button='left')
-            pyautogui.doubleClick()
-            # time.sleep(1)  # 有的游戏就是不能识别click,但是可以down加up，很奇怪
-            # pyautogui.mouseUp(button='left')
-            # pyautogui.moveTo(*origin, duration=dt)
+            # 单击
+            # pyautogui.doubleClick()
+            # 双击
+            # pyautogui.click()
+            # 按压释放
+            pyautogui.mouseDown(button='left')
+            time.sleep(0.5)
+            pyautogui.mouseUp(button='left')
+
+            time.sleep(0.2)
+            pyautogui.moveTo(*origin, duration=dt)
 
     # 拖动或长按
     def drag(self, position_start, end, second=0.2):
@@ -168,6 +174,7 @@ class Player(object):
             cur = len(loc_pos) > 0
             re.append(cur)
         re = re[0] if len(re) == 1 else re
+        time.sleep(0.5)
         return re
 
     # 寻找name_list中的目标，并点击第一个找到的目标，然后中止
