@@ -92,11 +92,19 @@ def recruit():
     my_player.find_touch_same_screen(['recruit_one', 'skip', 'confirm_3'])
 
 
-def simulation_room():
+def simulation_room(overclocking):
     if my_player.exist(['ark']):
-        my_player.find_touch(['ark', 'simulation_room', 'simulation_room', 'start_simulation_1', 'difficulty', 'zone'])
-        time.sleep(4)
-        my_player.find_touch(['start_simulation_2'])
+        my_player.find_touch(['ark', 'simulation_room', 'simulation_room'])
+
+        if overclocking:
+            my_player.find_touch_skewing(['start_simulation_1'], 90, 133)
+            time.sleep(1)
+            my_player.find_touch(['bios_setting', 'start_simulation_3'])
+        else:
+            my_player.find_touch(['start_simulation_1', 'difficulty', 'zone'])
+            time.sleep(2)
+            my_player.find_touch(['start_simulation_2'])
+
     while True:
         if my_player.exist(['start_simulation_2']):
             my_player.find_touch(['start_simulation_2'])
@@ -261,9 +269,9 @@ def continuous_click():
             my_player.continuous_click()
 
 
-def auto_all(auto_task_list, arena_shop_task):
+def auto_all(auto_task_list, arena_shop_task, overclocking):
     if auto_task_list[0]:
-        simulation_room()
+        simulation_room(overclocking)
     if auto_task_list[1]:
         auto_arena()
     if auto_task_list[2]:

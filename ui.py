@@ -19,7 +19,7 @@ class Ui_Form(object):
         font.setPointSize(9)
         Form.setFont(font)
         icon = QIcon()
-        icon.addFile(u"D:/project/nikke_auto_script/icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"../icon.png", QSize(), QIcon.Normal, QIcon.Off)
         Form.setWindowIcon(icon)
         self.pushButton1 = QPushButton(Form)
         self.pushButton1.setObjectName(u"pushButton1")
@@ -100,6 +100,9 @@ class Ui_Form(object):
         self.checkBox_2 = QCheckBox(Form)
         self.checkBox_2.setObjectName(u"checkBox_2")
         self.checkBox_2.setGeometry(QRect(40, 110, 101, 19))
+        self.checkBox_3 = QCheckBox(Form)
+        self.checkBox_3.setObjectName(u"checkBox_3")
+        self.checkBox_3.setGeometry(QRect(40, 290, 79, 19))
 
         self.retranslateUi(Form)
 
@@ -123,3 +126,5 @@ class Ui_Form(object):
         self.toolButton.setText(QCoreApplication.translate("Form", u"...", None))
         self.checkBox.setText(QCoreApplication.translate("Form", u"Q\u952e\u8fde\u70b9", None))
         self.checkBox_2.setText(QCoreApplication.translate("Form", u"\u7ade\u6280\u573a\u5546\u5e97", None))
+        self.checkBox_3.setText(QCoreApplication.translate("Form", u"\u8d85\u9891", None))
+    # retranslateUi

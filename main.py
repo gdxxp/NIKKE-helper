@@ -11,6 +11,7 @@ from PySide6 import QtWidgets, QtCore
 
 auto_task_list = [True, True, True, True, False, False, False]
 arena_shop_task = True
+overclocking = False
 
 
 class TaskThread(QtCore.QThread):
@@ -32,7 +33,7 @@ class TaskThread(QtCore.QThread):
                     auto_task.recruit()
                     time.sleep(1)
             elif self.task_number == 3:
-                auto_task.simulation_room()
+                auto_task.simulation_room(overclocking)
             elif self.task_number == 4:
                 auto_task.auto_consult()
             elif self.task_number == 5:
@@ -41,7 +42,7 @@ class TaskThread(QtCore.QThread):
                 auto_task.union_battle()
             elif self.task_number == 7:
                 while True:
-                    auto_task.auto_all(auto_task_list, arena_shop_task)
+                    auto_task.auto_all(auto_task_list, arena_shop_task, overclocking)
                     time.sleep(1)
 
 
@@ -63,6 +64,7 @@ class Window(QtWidgets.QWidget):
         self.ui.toolButton.clicked.connect(self.auto_all_settings)
         self.ui.checkBox.stateChanged.connect(lambda: self.continuous_click())
         self.ui.checkBox_2.stateChanged.connect(lambda: self.change_arena_shop_task())
+        self.ui.checkBox_3.stateChanged.connect(lambda: self.overclocking_simulation())
 
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
@@ -70,6 +72,7 @@ class Window(QtWidgets.QWidget):
         self.ui.label_2.setText("精确度：0.8")
         self.ui.label_3.setText("操作时间间隔：2.5s")
         self.ui.checkBox_2.setChecked(True)
+        self.ui.checkBox_3.setChecked(False)
 
         self.current_task = None
         self.timer = None
@@ -127,6 +130,10 @@ class Window(QtWidgets.QWidget):
     def change_arena_shop_task(self):
         global arena_shop_task
         arena_shop_task = self.ui.checkBox_2.isChecked()
+
+    def overclocking_simulation(self):
+        global overclocking
+        overclocking = self.ui.checkBox_3.isChecked()
 
     def continuous_click(self):
         if self.ui.checkBox.isChecked():
