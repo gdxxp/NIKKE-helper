@@ -127,6 +127,10 @@ def simulation_room(overclocking):
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
 
+        if my_player.exist(['exceeded_buff']):
+            my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
+            my_player.find_touch(['confirm_4'])
+
         if my_player.exist(['repeated_buff']):
             my_player.find_touch_skewing(['repeated_buff'], 90, 305)
             my_player.find_touch(['confirm_4'])
@@ -167,6 +171,10 @@ def auto_consult():
             my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'confirm_6', 'auto'])
         if my_player.exist(['confirm_6']):
             my_player.find_touch(['confirm_6'])
+        # 小红帽选项
+        if my_player.exist(['consult_option_2']):
+            time.sleep(1.3)
+            my_player.find_touch(['consult_option', 'skip', 'back'])
         if my_player.exist(['consult_option']):
             time.sleep(1.3)
             my_player.find_touch(['consult_option', 'skip', 'back'])
@@ -211,6 +219,7 @@ def union_battle():
                 my_player.find_touch(['03', 'enter_union_battle'])
                 if my_player.exist(['battle_times_done']):
                     my_player.find_touch(['home'])
+                    time.sleep(1)
                     break
 
         if my_player.exist(['next_step']):

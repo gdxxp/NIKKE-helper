@@ -99,7 +99,7 @@ class Player(object):
             # pyautogui.click()
             # 按压释放
             pyautogui.mouseDown(button='left')
-            time.sleep(0.5)
+            time.sleep(0.3)
             pyautogui.mouseUp(button='left')
 
             time.sleep(0.2)
