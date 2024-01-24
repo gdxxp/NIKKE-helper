@@ -18,10 +18,14 @@ def change_interval(new_interval):
 def gain_rewards(arena_shop_task):
     while True:
         # 仓库收米
-        if my_player.exist(['100%']):
-            destroy_item(my_player, '100%')
-        elif my_player.exist(['no100%']):
-            destroy_item(my_player, 'no100%')
+        if my_player.exist(['shop']):
+            my_player.find_touch_skewing(['shop'], 90, 104)
+            my_player.find_touch(['destroy'])
+
+            if my_player.exist(['start_destroy']):
+                my_player.find_touch(['start_destroy', 'REWARD'])
+
+            my_player.find_touch(['cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
         # 友情点
         if my_player.exist(['friend']):
             my_player.find_touch(['friend', 'give', 'confirm', 'close'])
@@ -127,22 +131,20 @@ def simulation_room(overclocking):
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
 
-        if my_player.exist(['exceeded_buff']):
-            my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
-            my_player.find_touch(['confirm_4'])
-
-        if my_player.exist(['repeated_buff']):
-            my_player.find_touch_skewing(['repeated_buff'], 90, 305)
-            my_player.find_touch(['confirm_4'])
+        handle_buff()
 
         if my_player.exist(['EPIC']):
             my_player.find_touch(['EPIC', 'confirm_7', 'confirm_4'])
+            handle_buff()
         elif my_player.exist(['SSR']):
             my_player.find_touch(['SSR', 'confirm_7', 'confirm_4'])
+            handle_buff()
         elif my_player.exist(['SR']):
             my_player.find_touch(['SR', 'confirm_7', 'confirm_4'])
+            handle_buff()
         elif my_player.exist(['R']):
             my_player.find_touch(['R', 'confirm_7', 'confirm_4'])
+            handle_buff()
 
         if my_player.exist(['enter_B']):
             my_player.find_touch(['enter_B'])
@@ -158,6 +160,9 @@ def simulation_room(overclocking):
                 my_player.find_touch(['SR', 'confirm_4'])
             elif my_player.exist(['R']):
                 my_player.find_touch(['R', 'confirm_4'])
+            if my_player.exist(['exceeded_buff']):
+                my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
+                my_player.find_touch(['confirm_4'])
             my_player.find_touch(['home', 'home'])
             break
 
@@ -295,18 +300,19 @@ def auto_all(auto_task_list, arena_shop_task, overclocking):
         gain_rewards(arena_shop_task)
 
 
-def destroy_item(player, location):
-    player.find_touch(['lobby', location, 'destroy'])
-
-    if player.exist(['start_destroy']):
-        player.find_touch(['start_destroy', 'REWARD'])
-
-    player.find_touch(['cancel', 'gain_reward', 'REWARD_2', 'REWARD', 'lobby'])
-
-
 def claim_free_diamond(player, location):
     player.find_touch(location)
 
     if player.exist(['free_diamond']):
         player.find_touch(['free_diamond', 'REWARD'])
+
+
+def handle_buff():
+    if my_player.exist(['exceeded_buff']):
+        my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
+        my_player.find_touch(['confirm_4'])
+
+    if my_player.exist(['repeated_buff']):
+        my_player.find_touch_skewing(['repeated_buff'], 90, 305)
+        my_player.find_touch(['confirm_4'])
 

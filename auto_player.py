@@ -94,13 +94,13 @@ class Player(object):
             dt = random.uniform(0.01, 0.02)
             pyautogui.moveTo(x, y, duration=dt)
             # 单击
-            # pyautogui.doubleClick()
+            pyautogui.doubleClick()
             # 双击
             # pyautogui.click()
             # 按压释放
-            pyautogui.mouseDown(button='left')
-            time.sleep(0.3)
-            pyautogui.mouseUp(button='left')
+            # pyautogui.mouseDown(button='left')
+            # time.sleep(0.3)
+            # pyautogui.mouseUp(button='left')
 
             time.sleep(0.2)
             pyautogui.moveTo(*origin, duration=dt)
