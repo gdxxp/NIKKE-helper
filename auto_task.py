@@ -160,9 +160,7 @@ def simulation_room(overclocking):
                 my_player.find_touch(['SR', 'confirm_4'])
             elif my_player.exist(['R']):
                 my_player.find_touch(['R', 'confirm_4'])
-            if my_player.exist(['exceeded_buff']):
-                my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
-                my_player.find_touch(['confirm_4'])
+            handle_buff()
             my_player.find_touch(['home', 'home'])
             break
 
@@ -309,7 +307,7 @@ def claim_free_diamond(player, location):
 
 def handle_buff():
     if my_player.exist(['exceeded_buff']):
-        my_player.find_touch_skewing(['exceeded_buff'], 90, 503)
+        my_player.find_touch_skewing(['exceeded_buff'], 90, 450)
         my_player.find_touch(['confirm_4'])
 
     if my_player.exist(['repeated_buff']):
