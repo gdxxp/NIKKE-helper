@@ -131,8 +131,6 @@ def simulation_room(overclocking):
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
 
-        handle_buff()
-
         if my_player.exist(['EPIC']):
             my_player.find_touch(['EPIC', 'confirm_7', 'confirm_4'])
             handle_buff()
@@ -145,6 +143,8 @@ def simulation_room(overclocking):
         elif my_player.exist(['R']):
             my_player.find_touch(['R', 'confirm_7', 'confirm_4'])
             handle_buff()
+
+        handle_buff()
 
         if my_player.exist(['enter_B']):
             my_player.find_touch(['enter_B'])
@@ -264,7 +264,7 @@ def single_raids():
         if my_player.exist(['enter_union_battle']):
             my_player.find_touch(['enter_union_battle'])
         elif my_player.exist(['team_set']):
-            my_player.find_touch_skewing(['team_set'], 0, 43)
+            my_player.find_touch_skewing(['team_set_2'], 0, 43)
             my_player.find_touch(['enter_union_battle'])
         if my_player.exist(['next_step']):
             my_player.find_touch(['next_step'])
