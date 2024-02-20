@@ -14,6 +14,9 @@ def change_accuracy(new_accuracy):
 def change_interval(new_interval):
     my_player.change_interval(new_interval)
 
+def change_click(click_pattern):
+    my_player.change_click(click_pattern)
+
 
 def gain_rewards(arena_shop_task):
     while True:
@@ -64,27 +67,20 @@ def gain_rewards(arena_shop_task):
             my_player.find_touch(['home'])
         # 特殊竞技场收米
         if my_player.exist(['ark']):
-            my_player.find_touch(
-                ['ark', 'arena', 'arena', 'special_arena', 'special_arena', 'touch', 'gain_reward_2', 'REWARD', 'home'])
+            my_player.find_touch(['ark', 'ark', 'arena', 'arena', 'special_arena', 'special_arena'])
+            my_player.find_touch_skewing(['touch'], 90, 87)
+            my_player.find_touch(['gain_reward_2', 'REWARD', 'home'])
             time.sleep(my_player.interval)
         # 任务委托收米
         if my_player.exist(['base']):
             my_player.find_touch(['base'])
-            time.sleep(6)
+            time.sleep(my_player.interval * 2.5)
             my_player.find_touch(['board', 'gain_all', 'REWARD', 'dispatch_all', 'dispatch', 'home', 'home'])
-            time.sleep(6)
-        # pass
-        if my_player.exist(['friend']):
-            my_player.find_touch_skewing(['friend'], 270, 50)
-            if my_player.exist(['gain_all_3']):
-                my_player.find_touch(['gain_all_3', 'REWARD'])
-            my_player.find_touch(['mission_2', 'gain_all_3'])
-            if my_player.exist(['rank_up_2']):
-                my_player.find_touch_skewing(['rank_up_2'], 270, 80)
-            my_player.find_touch(['friend'])
+            time.sleep(my_player.interval * 2.5)
         # 日常任务
         if my_player.exist(['mission']):
-            my_player.find_touch(['mission', 'gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
+            my_player.find_touch_skewing(['mission'], 180, 155)
+            my_player.find_touch(['gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
             if my_player.exist(['000']):
                 break
         # 露菲弹窗广告
@@ -284,18 +280,25 @@ def continuous_click():
 def auto_all(auto_task_list, arena_shop_task, overclocking):
     if auto_task_list[0]:
         simulation_room(overclocking)
+        time.sleep(my_player.interval)
     if auto_task_list[1]:
         auto_arena()
+        time.sleep(my_player.interval)
     if auto_task_list[2]:
         auto_consult()
+        time.sleep(my_player.interval)
     if auto_task_list[4]:
         union_battle()
+        time.sleep(my_player.interval)
     if auto_task_list[5]:
         interception_battle()
+        time.sleep(my_player.interval)
     if auto_task_list[6]:
         single_raids()
+        time.sleep(my_player.interval)
     if auto_task_list[3]:
         gain_rewards(arena_shop_task)
+        time.sleep(my_player.interval)
 
 
 def claim_free_diamond(player, location):

@@ -69,10 +69,15 @@ class Window(QtWidgets.QWidget):
         self.ui.horizontalSlider.valueChanged.connect(self.change_accuracy)
         self.ui.horizontalSlider_2.valueChanged.connect(self.change_interval)
 
+        self.ui.radioButton.clicked.connect(lambda: self.change_click())
+        self.ui.radioButton_2.clicked.connect(lambda: self.change_click())
+        self.ui.radioButton_3.clicked.connect(lambda: self.change_click())
+
         self.ui.label_2.setText("精确度：0.8")
         self.ui.label_3.setText("操作时间间隔：2.5s")
         self.ui.checkBox_2.setChecked(True)
         self.ui.checkBox_3.setChecked(False)
+        self.ui.radioButton.setChecked(True)
 
         self.current_task = None
         self.timer = None
@@ -134,6 +139,14 @@ class Window(QtWidgets.QWidget):
     def overclocking_simulation(self):
         global overclocking
         overclocking = self.ui.checkBox_3.isChecked()
+
+    def change_click(self):
+        if self.ui.radioButton.isChecked():
+            auto_task.change_click(1)
+        elif self.ui.radioButton_2.isChecked():
+            auto_task.change_click(2)
+        elif self.ui.radioButton_3.isChecked():
+            auto_task.change_click(3)
 
     def continuous_click(self):
         if self.ui.checkBox.isChecked():

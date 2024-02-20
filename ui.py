@@ -1,12 +1,10 @@
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QLabel, QPushButton,
-    QSizePolicy, QSlider, QToolButton, QWidget)
+from PySide6.QtCore import (QCoreApplication,
+    QMetaObject, QRect,
+    QSize, Qt)
+from PySide6.QtGui import (QCursor,
+    QFont, QIcon)
+from PySide6.QtWidgets import (QCheckBox, QLabel, QPushButton,
+    QSlider, QToolButton, QRadioButton)
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -103,6 +101,15 @@ class Ui_Form(object):
         self.checkBox_3 = QCheckBox(Form)
         self.checkBox_3.setObjectName(u"checkBox_3")
         self.checkBox_3.setGeometry(QRect(40, 290, 79, 19))
+        self.radioButton = QRadioButton(Form)
+        self.radioButton.setObjectName(u"radioButton")
+        self.radioButton.setGeometry(QRect(10, 0, 102, 19))
+        self.radioButton_2 = QRadioButton(Form)
+        self.radioButton_2.setObjectName(u"radioButton_2")
+        self.radioButton_2.setGeometry(QRect(70, 0, 102, 19))
+        self.radioButton_3 = QRadioButton(Form)
+        self.radioButton_3.setObjectName(u"radioButton_3")
+        self.radioButton_3.setGeometry(QRect(130, 0, 102, 19))
 
         self.retranslateUi(Form)
 
@@ -127,4 +134,7 @@ class Ui_Form(object):
         self.checkBox.setText(QCoreApplication.translate("Form", u"Q\u952e\u8fde\u70b9", None))
         self.checkBox_2.setText(QCoreApplication.translate("Form", u"\u7ade\u6280\u573a\u5546\u5e97", None))
         self.checkBox_3.setText(QCoreApplication.translate("Form", u"\u8d85\u9891", None))
+        self.radioButton.setText(QCoreApplication.translate("Form", u"\u5355\u51fb", None))
+        self.radioButton_2.setText(QCoreApplication.translate("Form", u"\u53cc\u51fb", None))
+        self.radioButton_3.setText(QCoreApplication.translate("Form", u"\u6309\u538b", None))
     # retranslateUi

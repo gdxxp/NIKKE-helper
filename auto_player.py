@@ -26,6 +26,7 @@ class Player(object):
         super(Player, self).__init__()
         self.accuracy = accuracy
         self.interval = 2.5
+        self.click_pattern = 1
         self.adb_mode = adb_mode
         self.load_target()
         if self.adb_mode:
@@ -93,16 +94,20 @@ class Player(object):
             origin = pyautogui.position()
             dt = random.uniform(0.01, 0.02)
             pyautogui.moveTo(x, y, duration=dt)
-            # 单击
-            pyautogui.doubleClick()
-            # 双击
-            # pyautogui.click()
-            # 按压释放
-            # pyautogui.mouseDown(button='left')
-            # time.sleep(0.3)
-            # pyautogui.mouseUp(button='left')
+            if self.click_pattern == 1:
+                # 单击
+                pyautogui.doubleClick()
+            elif self.click_pattern == 2:
+                # 双击
+                pyautogui.click()
+            else:
+                # 按压释放
+                pyautogui.mouseDown(button='left')
+                time.sleep(0.4)
+                pyautogui.mouseUp(button='left')
 
-            time.sleep(0.2)
+            time.sleep(0.13)
+
             pyautogui.moveTo(*origin, duration=dt)
 
     # 拖动或长按
@@ -174,7 +179,7 @@ class Player(object):
             cur = len(loc_pos) > 0
             re.append(cur)
         re = re[0] if len(re) == 1 else re
-        time.sleep(0.5)
+        time.sleep(0.2)
         return re
 
     # 寻找name_list中的目标，并点击第一个找到的目标，然后中止
@@ -224,7 +229,8 @@ class Player(object):
             loc_pos = self.locate(background, name)
             if len(loc_pos) > 0:
                 t = loc_pos[0]
-                new_t = (t[0] + distance * math.cos(math.radians(direction)), t[1] + distance * math.sin(math.radians(direction)))
+                new_t = (t[0] + distance * math.cos(math.radians(direction)),
+                         t[1] + distance * math.sin(math.radians(direction)))
                 loc_pos[0] = new_t
                 self.touch(loc_pos[0])  # 同一目标多个结果时只点第一个
                 re = name
@@ -245,3 +251,7 @@ class Player(object):
     # 修改时间间隔
     def change_interval(self, new_interval):
         self.interval = new_interval
+
+    # 修改点击模式
+    def change_click(self, click_pattern):
+        self.click_pattern = click_pattern
