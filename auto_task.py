@@ -167,7 +167,11 @@ def auto_consult():
             my_player.find_touch_skewing(['lobby'], 180, 145)
             my_player.find_touch(['consult'])
         if my_player.exist(['nikke_consult']):
-            my_player.find_touch(['nikke_consult', 'consult_2', 'confirm_6', 'confirm_6', 'auto'])
+            my_player.find_touch(['nikke_consult'])
+            if my_player.exist(['quick_consult']):
+                my_player.find_touch(['quick_consult', 'confirm_6', 'back'])
+            else:
+                my_player.find_touch(['consult_2', 'confirm_6', 'confirm_6', 'auto'])
         if my_player.exist(['confirm_6']):
             my_player.find_touch(['confirm_6'])
         # 小红帽选项
@@ -310,10 +314,10 @@ def claim_free_diamond(player, location):
 
 def handle_buff():
     if my_player.exist(['exceeded_buff']):
-        my_player.find_touch_skewing(['exceeded_buff'], 90, 450)
+        my_player.find_touch_skewing(['exceeded_buff'], 90, 300)
         my_player.find_touch(['confirm_4'])
 
     if my_player.exist(['repeated_buff']):
-        my_player.find_touch_skewing(['repeated_buff'], 90, 305)
+        my_player.find_touch_skewing(['repeated_buff'], 90, 300)
         my_player.find_touch(['confirm_4'])
 
