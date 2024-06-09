@@ -95,14 +95,15 @@ def recruit():
 def simulation_room(overclocking):
     if my_player.exist(['ark']):
         my_player.find_touch(['ark', 'simulation_room', 'simulation_room'])
+        time.sleep(my_player.interval)
 
         if overclocking:
             my_player.find_touch_skewing(['start_simulation_1'], 90, 133)
-            time.sleep(1)
+            time.sleep(my_player.interval)
             my_player.find_touch(['bios_setting', 'start_simulation_3'])
         else:
             my_player.find_touch(['start_simulation_1', 'difficulty', 'zone'])
-            time.sleep(2)
+            time.sleep(my_player.interval)
             my_player.find_touch(['start_simulation_2'])
 
     while True:
@@ -176,10 +177,10 @@ def auto_consult():
             my_player.find_touch(['confirm_6'])
         # 小红帽选项
         if my_player.exist(['consult_option_2']):
-            time.sleep(1.3)
+            time.sleep(my_player.interval)
             my_player.find_touch(['consult_option', 'skip', 'back'])
         if my_player.exist(['consult_option']):
-            time.sleep(1.3)
+            time.sleep(my_player.interval)
             my_player.find_touch(['consult_option', 'skip', 'back'])
         if my_player.exist(['rank_up']):
             my_player.find_touch(['rank_up', 'back'])

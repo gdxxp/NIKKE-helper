@@ -14,6 +14,9 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
+        icon = QIcon()
+        icon.addFile(u"./icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        Dialog.setWindowIcon(icon)
         Dialog.resize(210, 157)
         self.checkBox_0 = QCheckBox(Dialog)
         self.checkBox_0.setObjectName(u"checkBox_0")

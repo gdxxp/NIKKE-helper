@@ -17,7 +17,7 @@ class Ui_Form(object):
         font.setPointSize(9)
         Form.setFont(font)
         icon = QIcon()
-        icon.addFile(u"./icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"./icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         Form.setWindowIcon(icon)
         self.pushButton1 = QPushButton(Form)
         self.pushButton1.setObjectName(u"pushButton1")
