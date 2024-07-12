@@ -34,7 +34,11 @@ def gain_rewards(arena_shop_task):
             my_player.find_touch(['friend', 'give', 'confirm', 'close'])
         # 邮箱
         if my_player.exist(['mail']):
-            my_player.find_touch(['mail', 'gain_mail', 'REWARD', 'close_3'])
+            my_player.find_touch(['mail'])
+            time.sleep(my_player.interval)
+            my_player.find_touch(['gain_mail'])
+            time.sleep(my_player.interval)
+            my_player.find_touch(['REWARD', 'close_3'])
         # 商店每日免费物品
         if my_player.exist(['shop']):
             my_player.find_touch(['shop', '0'])
@@ -69,6 +73,7 @@ def gain_rewards(arena_shop_task):
         if my_player.exist(['ark']):
             my_player.find_touch(['ark', 'ark', 'arena', 'arena', 'special_arena', 'special_arena'])
             my_player.find_touch_skewing(['touch'], 90, 87)
+            time.sleep(my_player.interval)
             my_player.find_touch(['gain_reward_2', 'REWARD', 'home'])
             time.sleep(my_player.interval)
         # 任务委托收米
