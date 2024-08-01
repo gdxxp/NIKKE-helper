@@ -248,6 +248,8 @@ def union_battle():
 
 def interception_battle():
     while True:
+        if my_player.exist(['next_step']):
+            my_player.find_touch(['next_step'])
         if my_player.exist(['ark']):
             my_player.find_touch(['ark', 'interception', 'interception'])
         if my_player.exist(['interception_battle']):
@@ -259,8 +261,6 @@ def interception_battle():
         else:
             my_player.find_touch(['home'])
             break
-        if my_player.exist(['next_step']):
-            my_player.find_touch(['next_step'])
 
 
 def single_raids():
