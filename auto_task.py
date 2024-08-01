@@ -18,6 +18,11 @@ def change_click(click_pattern):
     my_player.change_click(click_pattern)
 
 
+def gain_diamond():
+    if my_player.exist(['free_diamond']):
+        my_player.find_touch(['free_diamond', 'REWARD'])
+
+
 def gain_rewards(arena_shop_task):
     while True:
         # 仓库收米
@@ -57,17 +62,19 @@ def gain_rewards(arena_shop_task):
             time.sleep(my_player.interval)
         # 付费商店每日,每周,每月钻石
         if my_player.exist(['pay_shop']):
-            my_player.find_touch(['pay_shop', 'gift'])
+            my_player.find_touch(['pay_shop'])
             time.sleep(my_player.interval)
+            if my_player.exist(["restrict"]):
+                my_player.find_touch_skewing(['restrict'], 90, 110)
+                my_player.find_touch(['confirm_10'])
 
-            if my_player.exist(['everymonth']):
-                claim_free_diamond(my_player, ['everymonth'])
-
-            if my_player.exist(['everyweek']):
-                claim_free_diamond(my_player, ['everyweek'])
-
-            claim_free_diamond(my_player, ['everyday'])
-
+            my_player.find_touch(['gift'])
+            my_player.find_touch_skewing(['everyday'], 0, 120)
+            gain_diamond()
+            my_player.find_touch_skewing(['everyweek'], 0, 240)
+            gain_diamond()
+            my_player.find_touch_skewing(['everyweek'], 0, 360)
+            gain_diamond()
             my_player.find_touch(['home'])
         # 特殊竞技场收米
         if my_player.exist(['ark']):
@@ -173,7 +180,7 @@ def auto_consult():
             my_player.find_touch_skewing(['lobby'], 180, 145)
             my_player.find_touch(['consult'])
         if my_player.exist(['nikke_consult']):
-            my_player.find_touch(['nikke_consult'])
+            my_player.find_touch_skewing(['nikke_consult'], 90, 130)
             if my_player.exist(['quick_consult']):
                 my_player.find_touch(['quick_consult', 'confirm_6', 'back'])
             else:
@@ -309,13 +316,6 @@ def auto_all(auto_task_list, arena_shop_task, overclocking):
     if auto_task_list[3]:
         gain_rewards(arena_shop_task)
         time.sleep(my_player.interval)
-
-
-def claim_free_diamond(player, location):
-    player.find_touch(location)
-
-    if player.exist(['free_diamond']):
-        player.find_touch(['free_diamond', 'REWARD'])
 
 
 def handle_buff():
