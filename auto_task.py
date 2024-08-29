@@ -208,7 +208,7 @@ def auto_arena():
         if my_player.exist(['rookie_arena']):
             my_player.find_touch(['rookie_arena'])
         if my_player.exist(['enter_battle_2']):
-            my_player.find_touch_skewing(['enter_battle_2'], 90, 163)
+            my_player.find_touch_skewing(['enter_battle_2'], 90, 190)
             my_player.find_touch(['enter_battle_3'])
         if my_player.exist(['win']):
             my_player.find_touch(['win'])
