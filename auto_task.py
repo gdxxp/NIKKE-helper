@@ -179,23 +179,27 @@ def auto_consult():
         if my_player.exist(['lobby']):
             my_player.find_touch_skewing(['lobby'], 180, 145)
             my_player.find_touch(['consult'])
+        if my_player.exist(['quick_consult']):
+            my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
         if my_player.exist(['nikke_consult']):
-            my_player.find_touch_skewing(['nikke_consult'], 90, 130)
+            my_player.find_touch_skewing(['nikke_consult'], 90, 110)
             if my_player.exist(['quick_consult']):
-                my_player.find_touch(['quick_consult', 'confirm_6', 'back'])
+                my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
             else:
                 my_player.find_touch(['consult_2', 'confirm_6', 'confirm_6', 'auto'])
+        if my_player.exist(['consult_2']):
+            my_player.find_touch(['consult_2', 'confirm_6', 'confirm_6', 'auto'])
         if my_player.exist(['confirm_6']):
             my_player.find_touch(['confirm_6'])
         # 小红帽选项
         if my_player.exist(['consult_option_2']):
             time.sleep(my_player.interval)
-            my_player.find_touch(['consult_option', 'skip', 'back'])
+            my_player.find_touch(['consult_option', 'skip', 'next_nikke'])
         if my_player.exist(['consult_option']):
             time.sleep(my_player.interval)
-            my_player.find_touch(['consult_option', 'skip', 'back'])
+            my_player.find_touch(['consult_option', 'skip', 'next_nikke'])
         if my_player.exist(['rank_up']):
-            my_player.find_touch(['rank_up', 'back'])
+            my_player.find_touch(['rank_up', 'next_nikke'])
         if my_player.exist(['consult_done']):
             my_player.find_touch(['home'])
             break
