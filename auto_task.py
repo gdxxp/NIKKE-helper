@@ -200,10 +200,11 @@ def auto_consult():
             my_player.find_touch(['consult_option', 'skip', 'next_nikke'])
         if my_player.exist(['rank_up']):
             my_player.find_touch(['rank_up', 'next_nikke'])
-        if my_player.exist(['consult_done']):
-            my_player.find_touch(['home'])
-            break
-
+        if my_player.exist(['consult_done']) and my_player.exist(['next_nikke']):
+            my_player.find_touch(['next_nikke'])
+            if my_player.exist(['consult_done']):
+                my_player.find_touch(['home'])
+                break
 
 def auto_arena():
     while True:
