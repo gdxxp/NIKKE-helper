@@ -25,6 +25,11 @@ def gain_diamond():
 
 def gain_rewards(arena_shop_task):
     while True:
+        if my_player.exist(['mission']):
+            my_player.find_touch_skewing(['mission'], 180, 150)
+            my_player.find_touch(['gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
+            if my_player.exist(['000']):
+                break
         # 仓库收米
         if my_player.exist(['shop']):
             my_player.find_touch_skewing(['shop'], 90, 104)
@@ -91,7 +96,7 @@ def gain_rewards(arena_shop_task):
             time.sleep(my_player.interval * 2.5)
         # 日常任务
         if my_player.exist(['mission']):
-            my_player.find_touch_skewing(['mission'], 180, 155)
+            my_player.find_touch_skewing(['mission'], 180, 150)
             my_player.find_touch(['gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
             if my_player.exist(['000']):
                 break
@@ -181,7 +186,7 @@ def auto_consult():
             my_player.find_touch(['consult'])
         if my_player.exist(['quick_consult']):
             my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
-        if my_player.exist(['nikke_consult']):
+        if my_player.exist(['nikke_consult']) and not my_player.exist(['quick_consult']):
             my_player.find_touch_skewing(['nikke_consult'], 90, 110)
             if my_player.exist(['quick_consult']):
                 my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
@@ -205,6 +210,7 @@ def auto_consult():
             if my_player.exist(['consult_done']):
                 my_player.find_touch(['home'])
                 break
+
 
 def auto_arena():
     while True:
