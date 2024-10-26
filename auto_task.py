@@ -186,7 +186,8 @@ def auto_consult():
             my_player.find_touch(['consult'])
         if my_player.exist(['quick_consult']):
             my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
-        if my_player.exist(['nikke_consult']) and not my_player.exist(['quick_consult']):
+            continue
+        if my_player.exist(['nikke_consult']):
             my_player.find_touch_skewing(['nikke_consult'], 90, 110)
             if my_player.exist(['quick_consult']):
                 my_player.find_touch(['quick_consult', 'confirm_6', 'next_nikke'])
