@@ -26,11 +26,6 @@ def gain_diamond():
 
 def gain_rewards(arena_shop_task):
     while True:
-        if my_player.exist(['mission']):
-            my_player.find_touch_skewing(['mission'], 180, 150)
-            my_player.find_touch(['gain_all_2', 'gain_all_2', 'REWARD', 'close_2'])
-            if my_player.exist(['000']):
-                break
         # 仓库收米
         if my_player.exist(['shop']):
             my_player.find_touch_skewing(['shop'], 90, 104)
