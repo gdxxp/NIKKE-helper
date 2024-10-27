@@ -14,6 +14,7 @@ def change_accuracy(new_accuracy):
 def change_interval(new_interval):
     my_player.change_interval(new_interval)
 
+
 def change_click(click_pattern):
     my_player.change_click(click_pattern)
 
